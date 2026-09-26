@@ -1,0 +1,1789 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#121729" />
+  <title>Two Minute Terms — Business vocabulary, made memorable</title>
+  <style>
+    :root {
+      --ink: #111729;
+      --muted: #677083;
+      --paper: #f5f1e8;
+      --card: #fffdf8;
+      --line: #dcd8cf;
+      --accent: #ff6b4a;
+      --navy: #121729;
+      --shadow: 0 24px 70px rgba(23, 27, 39, .12);
+      --radius: 26px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    button, input { font: inherit; }
+    button { color: inherit; }
+    button:focus-visible, input:focus-visible { outline: 3px solid color-mix(in srgb, var(--accent), white 35%); outline-offset: 3px; }
+    .noise {
+      position: fixed; inset: 0; pointer-events: none; z-index: 50; opacity: .045;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+    }
+    .topbar {
+      max-width: 1180px; margin: 0 auto; padding: 18px 22px 10px;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 860; letter-spacing: -.035em; }
+    .brand-mark {
+      width: 40px; height: 40px; border-radius: 12px; background: var(--navy); color: white;
+      display: grid; place-items: center; transform: rotate(-4deg); box-shadow: 5px 5px 0 var(--accent);
+    }
+    .brand-mark svg { width: 22px; }
+    .brand-text { font-size: 1.06rem; }
+    .top-actions { display: flex; gap: 10px; align-items: center; }
+    .source-pill, .library-btn, .ai-btn {
+      border: 1px solid var(--line); background: rgba(255,255,255,.48); border-radius: 999px;
+      padding: 9px 13px; color: #4d5667; font-size: .79rem; font-weight: 750;
+    }
+    .library-btn, .ai-btn { cursor: pointer; display: flex; gap: 7px; align-items: center; }
+    .library-btn:hover { background: white; border-color: #b9b6af; }
+    .library-btn svg, .ai-btn svg { width: 15px; }
+    .ai-btn { border-color: var(--navy); background: var(--navy); color: white; }
+    .ai-btn:hover { background: #242c47; }
+    .ai-btn svg { color: var(--accent); }
+    main { max-width: 1180px; margin: 0 auto; padding: 0 22px 32px; }
+    .intro {
+      display: flex; justify-content: space-between; align-items: end; gap: 26px; padding: 18px 4px 17px;
+    }
+    .eyebrow { margin: 0 0 9px; color: var(--accent); text-transform: uppercase; letter-spacing: .14em; font-size: .7rem; font-weight: 900; }
+    .intro h1 { font-size: clamp(2rem, 4vw, 3.55rem); letter-spacing: -.06em; line-height: .96; margin: 0; max-width: 700px; }
+    .intro h1 span { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; font-style: italic; letter-spacing: -.045em; }
+    .intro-copy { width: 270px; color: var(--muted); font-size: .84rem; line-height: 1.5; margin: 0 0 2px; }
+    .workspace {
+      --accent-soft: color-mix(in srgb, var(--accent), white 85%);
+      min-height: 560px; border: 1px solid #cfcac0; border-radius: 26px; background: var(--card);
+      box-shadow: var(--shadow); overflow: hidden; display: grid; grid-template-columns: minmax(280px, .7fr) minmax(0, 1.5fr);
+    }
+    .visual-panel {
+      position: relative; background: var(--navy); color: white; overflow: hidden; min-height: 560px;
+      padding: 25px; display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .visual-panel::before {
+      content: ''; position: absolute; width: 420px; height: 420px; border: 1px solid rgba(255,255,255,.12);
+      border-radius: 50%; left: -110px; top: 110px;
+    }
+    .visual-panel::after {
+      content: ''; position: absolute; width: 260px; height: 260px; border: 1px dashed rgba(255,255,255,.13);
+      border-radius: 50%; right: -130px; bottom: 15px; animation: spin 30s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .visual-head, .visual-main, .visual-foot { position: relative; z-index: 1; }
+    .visual-head { display: flex; justify-content: space-between; align-items: center; }
+    .category-chip {
+      padding: 8px 11px; border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.08);
+      border-radius: 999px; text-transform: uppercase; letter-spacing: .12em; font-size: .65rem; font-weight: 850;
+    }
+    .deck-count { color: rgba(255,255,255,.55); font-size: .72rem; font-variant-numeric: tabular-nums; }
+    .visual-main { padding: 17px 0 20px; }
+    .monogram-wrap {
+      position: relative; width: 100%; max-width: 285px; height: 154px; margin: 0 0 29px;
+      border-radius: 21px; background: #f7f1e5; color: var(--navy); padding: 11px;
+      box-shadow: 13px 13px 0 rgba(255,255,255,.075); transform: rotate(-1.2deg);
+      transition: transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s;
+    }
+    .monogram-wrap:hover { transform: rotate(.4deg) translateY(-3px); box-shadow: 17px 17px 0 rgba(255,255,255,.09); }
+    .term-art { width: 100%; height: 100%; display: grid; place-items: center; overflow: hidden; border-radius: 17px; }
+    .term-art svg { display: block; width: 100%; height: 100%; overflow: visible; }
+    .term-art .ink { fill: none; stroke: var(--navy); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+    .term-art .thin { fill: none; stroke: var(--navy); stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; }
+    .term-art .accent-fill { fill: var(--accent); stroke: var(--navy); stroke-width: 3.2; }
+    .term-art .accent-stroke { fill: none; stroke: var(--accent); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+    .term-art .paper-fill { fill: #fffdf8; stroke: var(--navy); stroke-width: 3.2; }
+    .monogram {
+      position: absolute; left: 20px; bottom: -18px; min-width: 70px; height: 54px; padding: 0 13px;
+      border-radius: 16px; background: var(--accent); color: var(--navy); border: 4px solid var(--navy);
+      display: grid; place-items: center; font-size: 1rem; font-weight: 950; letter-spacing: -.055em;
+      box-shadow: 6px 6px 0 rgba(18,23,41,.25); transition: background .35s;
+    }
+    .orbit-dot { position: absolute; width: 14px; height: 14px; border: 3px solid var(--navy); background: white; border-radius: 50%; right: 16px; top: 14px; }
+    .visual-title { font-size: clamp(1.85rem, 3.15vw, 3rem); line-height: .94; letter-spacing: -.057em; margin: 0 0 10px; max-width: 340px; }
+    .visual-full { color: rgba(255,255,255,.63); font-family: Georgia, serif; font-style: italic; font-size: .9rem; line-height: 1.38; margin: 0; max-width: 310px; }
+    .visual-foot { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 20px; }
+    .learned-label { font-size: .66rem; color: rgba(255,255,255,.56); text-transform: uppercase; letter-spacing: .13em; font-weight: 800; }
+    .learned-number { display: block; font-size: 1.45rem; color: white; font-weight: 850; letter-spacing: -.05em; margin-top: 4px; }
+    .mini-bars { height: 38px; display: flex; gap: 3px; align-items: end; }
+    .mini-bars span { width: 4px; border-radius: 3px; background: var(--accent); animation: wave 1s ease-in-out infinite alternate; animation-play-state: paused; }
+    .mini-bars span:nth-child(1) {height: 12px}.mini-bars span:nth-child(2){height:25px;animation-delay:-.4s}.mini-bars span:nth-child(3){height:18px;animation-delay:-.2s}.mini-bars span:nth-child(4){height:34px;animation-delay:-.65s}.mini-bars span:nth-child(5){height:21px;animation-delay:-.1s}
+    .is-speaking .mini-bars span { animation-play-state: running; }
+    @keyframes wave { to { height: 7px; opacity: .48; } }
+    .lesson-panel { min-width: 0; display: flex; flex-direction: column; }
+    .lesson-toolbar {
+      min-height: 62px; border-bottom: 1px solid var(--line); padding: 11px 22px;
+      display: flex; justify-content: space-between; align-items: center; gap: 15px;
+    }
+    .time-meta { display: flex; gap: 11px; align-items: center; color: var(--muted); font-size: .75rem; font-weight: 700; }
+    .time-icon { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; }
+    .time-icon svg { width: 15px; }
+    .toolbar-actions { display: flex; gap: 8px; }
+    .icon-btn {
+      height: 39px; border-radius: 12px; border: 1px solid var(--line); background: transparent; padding: 0 13px;
+      display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: .76rem; font-weight: 800;
+    }
+    .icon-btn:hover { background: #f1eee7; }
+    .icon-btn svg { width: 16px; }
+    .lesson-scroll { padding: 25px 30px 12px; overflow: hidden; }
+    .mobile-tabs { display: none; }
+    .karaoke {
+      display: none; margin: -5px 0 28px; padding: 18px 18px 15px; border-radius: 18px;
+      background: var(--navy); color: white; box-shadow: 0 14px 35px rgba(18,23,41,.16);
+      border: 1px solid rgba(255,255,255,.1); overflow: hidden;
+    }
+    .karaoke.show { display: block; animation: transcriptIn .32s cubic-bezier(.2,.8,.2,1) both; }
+    @keyframes transcriptIn { from { opacity: 0; transform: translateY(-8px); } }
+    .karaoke-head { display: flex; justify-content: space-between; align-items: center; gap: 14px; margin-bottom: 12px; }
+    .karaoke-title { display: flex; align-items: center; gap: 8px; font-size: .65rem; font-weight: 900; text-transform: uppercase; letter-spacing: .13em; }
+    .live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent), transparent 78%); }
+    .is-speaking .live-dot { animation: livePulse 1s ease-in-out infinite alternate; }
+    @keyframes livePulse { to { opacity: .45; transform: scale(.75); } }
+    .karaoke-status { color: rgba(255,255,255,.52); font-size: .65rem; font-weight: 750; }
+    .karaoke-copy {
+      max-height: 142px; overflow-y: auto; overscroll-behavior: contain; padding: 1px 5px 8px 1px;
+      font: 400 1.01rem/1.85 Georgia, 'Times New Roman', serif; color: rgba(255,255,255,.55);
+      scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.2) transparent;
+    }
+    .karaoke-copy .word { border-radius: 4px; transition: color .12s, background-color .12s, box-shadow .12s; }
+    .karaoke-copy .word.sentence-active { color: rgba(255,255,255,.92); }
+    .karaoke-copy .word.spoken { color: rgba(255,255,255,.34); }
+    .karaoke-copy .word.active {
+      color: var(--navy); background: var(--accent); box-shadow: 0 0 0 3px var(--accent); position: relative; z-index: 1;
+    }
+    .karaoke-track { height: 3px; background: rgba(255,255,255,.1); margin-top: 11px; border-radius: 3px; overflow: hidden; }
+    .karaoke-progress { display: block; width: 0; height: 100%; background: var(--accent); border-radius: inherit; transition: width .16s linear; }
+    .hook {
+      margin: 0 0 21px; font: 400 clamp(1.12rem, 1.7vw, 1.43rem)/1.4 Georgia, 'Times New Roman', serif;
+      letter-spacing: -.014em; color: #292f3c; border-left: 4px solid var(--accent); padding-left: 16px;
+    }
+    .definition { margin: 0 0 23px; font-size: .92rem; line-height: 1.63; color: #343b4b; }
+    .section-label { display: flex; gap: 8px; align-items: center; text-transform: uppercase; letter-spacing: .13em; font-size: .62rem; font-weight: 900; margin: 0 0 11px; color: #6c7380; }
+    .section-label::before { content: ''; width: 16px; height: 3px; background: var(--accent); border-radius: 2px; }
+    .steps { list-style: none; margin: 0 0 21px; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; counter-reset: step; }
+    .steps li { counter-increment: step; background: #f3f0e8; padding: 12px; border-radius: 12px; line-height: 1.4; font-size: .75rem; color: #414959; min-height: 98px; }
+    .steps li::before { content: '0' counter(step); display: block; color: var(--accent); font-weight: 900; letter-spacing: .05em; margin-bottom: 11px; }
+    .example-box {
+      background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent), white 70%); border-radius: 17px;
+      padding: 16px; margin-bottom: 21px; display: grid; grid-template-columns: auto 1fr; gap: 13px;
+    }
+    .example-icon { width: 38px; height: 38px; border-radius: 11px; background: var(--accent); display: grid; place-items: center; }
+    .example-icon svg { width: 19px; color: var(--navy); }
+    .example-box h3 { margin: 0 0 6px; font-size: .7rem; text-transform: uppercase; letter-spacing: .12em; }
+    .example-box p { margin: 0; line-height: 1.58; font-size: .86rem; color: #3b4351; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 17px; }
+    .note p { font-size: .78rem; line-height: 1.52; color: #535b69; margin: 0; }
+    .takeaway { border-top: 1px solid var(--line); padding: 17px 0 6px; display: flex; align-items: start; gap: 11px; }
+    .takeaway-badge { flex: 0 0 auto; width: 28px; height: 28px; border-radius: 8px; background: var(--navy); color: white; display: grid; place-items: center; font-size: .8rem; }
+    .takeaway p { margin: 2px 0 0; font: 700 1rem/1.5 Georgia, serif; }
+    .bottom-controls {
+      margin-top: auto; border-top: 1px solid var(--line); padding: 11px 22px; background: rgba(255,253,248,.94);
+      display: flex; justify-content: space-between; align-items: center; gap: 12px; position: sticky; bottom: 0; z-index: 4;
+    }
+    .play-btn, .next-btn, .quiz-btn { border: 0; cursor: pointer; font-weight: 850; }
+    .play-btn { display: flex; align-items: center; gap: 10px; background: transparent; padding: 0; }
+    .play-disc { width: 46px; height: 46px; border-radius: 50%; background: var(--navy); color: white; display: grid; place-items: center; }
+    .play-disc svg { width: 18px; }
+    .play-copy { text-align: left; }
+    .play-copy span { display: block; font-size: .76rem; }
+    .play-copy small { display: block; font-size: .65rem; color: var(--muted); margin-top: 3px; font-weight: 650; }
+    .right-controls { display: flex; gap: 9px; }
+    .quiz-btn { background: #ece8df; border-radius: 13px; padding: 13px 16px; }
+    .next-btn { background: var(--accent); color: var(--navy); border-radius: 13px; padding: 13px 17px; display: flex; align-items: center; gap: 9px; box-shadow: 0 6px 0 color-mix(in srgb, var(--accent), black 21%); transform: translateY(-3px); }
+    .next-btn:active { box-shadow: 0 2px 0 color-mix(in srgb, var(--accent), black 21%); transform: translateY(1px); }
+    .next-btn svg { width: 17px; }
+    .kbd { display: inline-grid; place-items: center; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 5px; background: rgba(0,0,0,.1); font-size: .59rem; }
+    .page-foot { color: #7d817f; font-size: .72rem; line-height: 1.55; text-align: center; padding: 22px 14px 0; }
+    .swap-out { animation: swapOut .2s ease forwards; }
+    .swap-in { animation: swapIn .45s cubic-bezier(.2,.8,.2,1) both; }
+    @keyframes swapOut { to { opacity: 0; transform: translateY(10px); } }
+    @keyframes swapIn { from { opacity: 0; transform: translateY(-15px); } }
+    .confetti { position: fixed; width: 9px; height: 14px; border-radius: 2px; z-index: 80; pointer-events: none; animation: confetti .85s ease-out forwards; }
+    @keyframes confetti { from { opacity: 1; transform: translate(0,0) rotate(0); } to { opacity: 0; transform: translate(var(--dx), var(--dy)) rotate(var(--rot)); } }
+    dialog { border: 0; border-radius: 24px; padding: 0; width: min(610px, calc(100% - 28px)); box-shadow: 0 35px 100px rgba(15,20,34,.28); background: var(--card); }
+    dialog::backdrop { background: rgba(15,20,34,.58); backdrop-filter: blur(6px); }
+    .dialog-head { padding: 24px 26px 20px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 18px; }
+    .dialog-head p { margin: 0 0 5px; color: var(--accent); text-transform: uppercase; font-size: .65rem; letter-spacing: .13em; font-weight: 900; }
+    .dialog-head h2 { margin: 0; font-size: 1.45rem; letter-spacing: -.035em; }
+    .close-btn { width: 34px; height: 34px; border: 1px solid var(--line); border-radius: 50%; background: white; cursor: pointer; }
+    .quiz-body { padding: 22px 26px 27px; }
+    .quiz-question { font: 1.02rem/1.5 Georgia, serif; margin: 0 0 17px; }
+    .quiz-options { display: grid; gap: 9px; }
+    .quiz-option { text-align: left; border: 1px solid var(--line); background: #f7f4ee; border-radius: 13px; padding: 14px 15px; cursor: pointer; line-height: 1.42; font-size: .84rem; }
+    .quiz-option:hover:not(:disabled) { border-color: var(--accent); background: var(--accent-soft); }
+    .quiz-option.correct { border-color: #1b9b62; background: #e8f7ee; }
+    .quiz-option.wrong { border-color: #d55252; background: #fdecec; }
+    .quiz-result { display: none; margin: 17px 0 0; padding: 13px 15px; border-radius: 12px; background: #f0ede6; font-size: .82rem; line-height: 1.5; }
+    .quiz-result.show { display: block; }
+    .ai-dialog { width: min(690px, calc(100% - 24px)); height: min(760px, calc(100dvh - 36px)); overflow: hidden; }
+    .ai-shell { height: 100%; display: flex; flex-direction: column; min-height: 0; }
+    .ai-head {
+      flex: 0 0 auto; padding: 18px 20px; background: var(--navy); color: white;
+      display: flex; align-items: center; justify-content: space-between; gap: 15px;
+    }
+    .ai-identity { display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .ai-orb { width: 42px; height: 42px; flex: 0 0 auto; border-radius: 14px; background: var(--accent); color: var(--navy); display: grid; place-items: center; }
+    .ai-orb svg { width: 23px; }
+    .ai-head h2 { font-size: 1.05rem; margin: 0 0 3px; }
+    .ai-head p { margin: 0; color: rgba(255,255,255,.58); font-size: .7rem; }
+    .ai-head .close-btn { color: white; background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.16); }
+    .ai-messages { flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 19px; background: #f5f1e8; }
+    .ai-message { display: flex; gap: 9px; align-items: flex-end; margin: 0 0 14px; }
+    .ai-message.user { justify-content: flex-end; }
+    .ai-avatar { width: 27px; height: 27px; flex: 0 0 auto; border-radius: 9px; background: var(--navy); color: var(--accent); display: grid; place-items: center; font-size: .7rem; font-weight: 900; }
+    .ai-bubble { max-width: 84%; padding: 12px 14px; border-radius: 16px 16px 16px 4px; background: white; border: 1px solid var(--line); color: #343b4b; font-size: .82rem; line-height: 1.55; white-space: pre-line; box-shadow: 0 4px 15px rgba(18,23,41,.05); }
+    .ai-message.user .ai-bubble { color: white; background: var(--navy); border-color: var(--navy); border-radius: 16px 16px 4px 16px; }
+    .ai-references { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .ai-ref { border: 1px solid color-mix(in srgb, var(--accent), black 10%); background: var(--accent-soft); border-radius: 999px; padding: 6px 9px; color: var(--ink); cursor: pointer; font-size: .65rem; font-weight: 850; }
+    .ai-ref:hover { background: var(--accent); }
+    .ai-typing { display: flex; gap: 4px; align-items: center; min-height: 18px; }
+    .ai-typing i { width: 6px; height: 6px; border-radius: 50%; background: #7d8492; animation: typing 1s ease-in-out infinite alternate; }
+    .ai-typing i:nth-child(2) { animation-delay: .18s; }
+    .ai-typing i:nth-child(3) { animation-delay: .36s; }
+    @keyframes typing { to { opacity: .25; transform: translateY(-3px); } }
+    .ai-suggestions { flex: 0 0 auto; padding: 10px 15px 0; display: flex; gap: 7px; overflow-x: auto; background: var(--card); scrollbar-width: none; }
+    .ai-suggestions::-webkit-scrollbar { display: none; }
+    .ai-suggestion { white-space: nowrap; border: 1px solid var(--line); background: #f4f1ea; border-radius: 999px; padding: 8px 10px; color: #505867; cursor: pointer; font-size: .68rem; font-weight: 750; }
+    .ai-suggestion:hover { border-color: var(--accent); background: var(--accent-soft); }
+    .ai-form { flex: 0 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 9px; padding: 11px 15px 15px; background: var(--card); }
+    .ai-input { width: 100%; min-width: 0; border: 1px solid var(--line); background: #f4f1ea; border-radius: 14px; padding: 12px 14px; color: var(--ink); }
+    .ai-input::placeholder { color: #8b9098; }
+    .ai-send { width: 45px; border: 0; border-radius: 14px; background: var(--accent); color: var(--navy); cursor: pointer; display: grid; place-items: center; }
+    .ai-send:hover { filter: brightness(.96); }
+    .ai-send svg { width: 19px; }
+    .ai-note { grid-column: 1 / -1; margin: -1px 2px 0; color: #8a8f96; font-size: .61rem; }
+    .drawer-backdrop { position: fixed; inset: 0; background: rgba(15,20,34,.48); z-index: 90; opacity: 0; pointer-events: none; transition: opacity .25s; }
+    .drawer { position: fixed; z-index: 91; top: 0; right: 0; width: min(440px, 94vw); height: 100%; background: var(--card); box-shadow: -20px 0 70px rgba(15,20,34,.2); transform: translateX(102%); transition: transform .35s cubic-bezier(.2,.8,.2,1); display: flex; flex-direction: column; }
+    .drawer-open .drawer-backdrop { opacity: 1; pointer-events: auto; }
+    .drawer-open .drawer { transform: translateX(0); }
+    .drawer-head { padding: 26px; border-bottom: 1px solid var(--line); }
+    .drawer-title { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .drawer-title h2 { margin: 0; letter-spacing: -.035em; }
+    .search-wrap { position: relative; }
+    .search-wrap svg { position: absolute; left: 13px; top: 13px; width: 17px; color: #757b85; }
+    .search { width: 100%; border: 1px solid var(--line); background: #f3f0e8; border-radius: 13px; padding: 12px 13px 12px 40px; }
+    .term-list { overflow: auto; padding: 12px; }
+    .term-row { width: 100%; border: 0; background: transparent; display: grid; grid-template-columns: 42px 1fr auto; align-items: center; gap: 12px; padding: 11px; border-radius: 13px; cursor: pointer; text-align: left; }
+    .term-row:hover { background: #f2efe8; }
+    .term-row.current { background: var(--accent-soft); }
+    .row-icon { width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center; color: var(--navy); font-weight: 900; font-size: .72rem; }
+    .row-copy strong { display: block; font-size: .86rem; }
+    .row-copy small { display: block; color: var(--muted); margin-top: 3px; font-size: .68rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 235px; }
+    .seen-dot { width: 8px; height: 8px; border-radius: 50%; border: 1px solid #b3b6b5; }
+    .seen-dot.seen { background: #20a464; border-color: #20a464; }
+    @media (max-width: 860px) {
+      .intro h1 { font-size: 2.75rem; }
+      .intro-copy { width: 235px; }
+      .workspace { grid-template-columns: 1fr; }
+      .visual-panel { min-height: 300px; padding: 22px 25px; }
+      .visual-main {
+        display: grid; grid-template-columns: 185px minmax(0, 1fr); grid-template-rows: auto auto;
+        column-gap: 24px; align-items: center; padding: 16px 0;
+      }
+      .monogram-wrap { grid-row: 1 / 3; width: 185px; max-width: none; height: 138px; margin: 0; }
+      .monogram { min-width: 64px; height: 46px; font-size: .86rem; bottom: -13px; }
+      .visual-title { max-width: 560px; font-size: 2.35rem; align-self: end; }
+      .visual-full { align-self: start; max-width: 520px; }
+      .lesson-panel { min-height: 0; }
+    }
+    @media (max-width: 620px) {
+      .topbar { padding: 13px 13px 8px; }
+      .brand { gap: 9px; }
+      .brand-mark { width: 34px; height: 34px; border-radius: 10px; box-shadow: 3px 3px 0 var(--accent); }
+      .brand-mark svg { width: 18px; }
+      .brand-text { font-size: .94rem; }
+      .source-pill { display: none; }
+      .library-btn { padding: 8px 10px; font-size: .72rem; }
+      main { padding: 0 6px 20px; }
+      .intro { padding: 10px 8px 13px; display: block; }
+      .intro .eyebrow { margin-bottom: 6px; }
+      .intro h1 { font-size: clamp(1.65rem, 8.4vw, 2.15rem); line-height: 1; }
+      .intro h1 br { display: none; }
+      .intro h1 span::before { content: ' '; }
+      .intro-copy { display: none; }
+      .workspace { border-radius: 18px; }
+      .visual-panel { min-height: 244px; padding: 16px; }
+      .category-chip { padding: 6px 9px; font-size: .58rem; }
+      .deck-count { font-size: .62rem; }
+      .visual-main {
+        grid-template-columns: 112px minmax(0, 1fr); grid-template-rows: auto auto;
+        column-gap: 15px; padding: 14px 0 11px;
+      }
+      .monogram-wrap { width: 112px; height: 96px; padding: 7px; border-radius: 16px; box-shadow: 7px 7px 0 rgba(255,255,255,.075); }
+      .term-art { border-radius: 12px; }
+      .monogram { left: 10px; bottom: -10px; min-width: 48px; height: 36px; padding: 0 8px; border-width: 3px; border-radius: 11px; font-size: .65rem; box-shadow: 3px 3px 0 rgba(18,23,41,.25); }
+      .orbit-dot { width: 10px; height: 10px; border-width: 2px; right: 9px; top: 8px; }
+      .visual-title { font-size: clamp(1.35rem, 7vw, 2rem); margin-bottom: 6px; line-height: .96; }
+      .visual-full { font-size: .74rem; line-height: 1.28; }
+      .visual-foot { align-items: center; }
+      .learned-label { font-size: .55rem; }
+      .learned-number { font-size: 1.05rem; margin-top: 1px; }
+      .mini-bars { height: 27px; }
+      .lesson-toolbar { min-height: 52px; padding: 8px 13px; }
+      .time-icon { width: 29px; height: 29px; }
+      .time-meta { gap: 8px; font-size: .69rem; }
+      .toolbar-actions { gap: 6px; }
+      .icon-btn { height: 34px; padding: 0 9px; border-radius: 10px; }
+      .toolbar-actions .icon-btn span { display: none; }
+      .lesson-panel { display: flex; }
+      .bottom-controls {
+        order: 1; position: sticky; top: 0; bottom: auto; padding: 9px 11px; margin: 0;
+        border-top: 0; border-bottom: 1px solid var(--line); z-index: 6;
+      }
+      .lesson-scroll { order: 2; padding: 14px 14px 11px; }
+      .play-disc { width: 41px; height: 41px; }
+      .play-copy { display: none; }
+      .right-controls { gap: 6px; }
+      .quiz-btn { padding: 10px; border-radius: 11px; font-size: .7rem; }
+      .next-btn { padding: 10px 11px; border-radius: 11px; font-size: .72rem; box-shadow: 0 4px 0 color-mix(in srgb, var(--accent), black 21%); }
+      .next-btn .kbd { display: none; }
+      .karaoke { margin: 0 0 13px; padding: 13px; border-radius: 14px; }
+      .karaoke-copy { max-height: 112px; font-size: .92rem; line-height: 1.72; }
+      .mobile-tabs {
+        display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 4px; margin: 0 0 16px;
+        border: 1px solid var(--line); border-radius: 12px; background: #efebe3;
+      }
+      .mobile-tabs button {
+        border: 0; border-radius: 9px; background: transparent; padding: 8px 5px; cursor: pointer;
+        color: #687080; font-size: .68rem; font-weight: 850;
+      }
+      .mobile-tabs button.active { background: var(--card); color: var(--ink); box-shadow: 0 2px 7px rgba(18,23,41,.09); }
+      .lesson-scroll[data-mobile-panel="overview"] .steps-label,
+      .lesson-scroll[data-mobile-panel="overview"] .steps,
+      .lesson-scroll[data-mobile-panel="overview"] .example-box,
+      .lesson-scroll[data-mobile-panel="overview"] .two-col,
+      .lesson-scroll[data-mobile-panel="overview"] .takeaway { display: none; }
+      .lesson-scroll[data-mobile-panel="steps"] .hook,
+      .lesson-scroll[data-mobile-panel="steps"] .definition,
+      .lesson-scroll[data-mobile-panel="steps"] .example-box,
+      .lesson-scroll[data-mobile-panel="steps"] .two-col,
+      .lesson-scroll[data-mobile-panel="steps"] .takeaway { display: none; }
+      .lesson-scroll[data-mobile-panel="application"] .hook,
+      .lesson-scroll[data-mobile-panel="application"] .definition,
+      .lesson-scroll[data-mobile-panel="application"] .steps-label,
+      .lesson-scroll[data-mobile-panel="application"] .steps { display: none; }
+      .hook { margin-bottom: 16px; padding-left: 13px; font-size: 1.05rem; }
+      .definition { margin-bottom: 6px; font-size: .86rem; line-height: 1.55; }
+      .steps { grid-template-columns: 1fr; margin-bottom: 2px; }
+      .steps li { min-height: auto; display: grid; grid-template-columns: 31px 1fr; gap: 5px; padding: 11px; }
+      .steps li::before { margin: 0; }
+      .example-box { padding: 13px; margin-bottom: 16px; }
+      .example-icon { width: 34px; height: 34px; }
+      .two-col { grid-template-columns: 1fr; gap: 17px; }
+      .takeaway { padding-top: 14px; }
+      .takeaway p { font-size: .91rem; }
+      .page-foot { padding-top: 14px; font-size: .64rem; }
+      .ai-dialog { width: calc(100% - 10px); height: calc(100dvh - 10px); border-radius: 18px; }
+      .ai-head { padding: 13px 14px; }
+      .ai-orb { width: 36px; height: 36px; border-radius: 11px; }
+      .ai-messages { padding: 12px; }
+      .ai-bubble { max-width: 89%; padding: 10px 12px; font-size: .79rem; }
+      .ai-suggestions { padding: 8px 10px 0; }
+      .ai-form { padding: 9px 10px 11px; }
+      .ai-note { font-size: .57rem; }
+    }
+    @media (max-width: 350px) {
+      .brand-text { display: none; }
+      .top-actions { gap: 5px; }
+      .library-btn, .ai-btn { padding: 8px 9px; font-size: .68rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 17.5 10 4l2.2 7H20L8 20l2-8H4z"/></svg>
+      </div>
+      <span class="brand-text">Two Minute Terms</span>
+    </div>
+    <div class="top-actions">
+      <button class="ai-btn" id="aiBtn" aria-haspopup="dialog">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5zM19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg>
+        Ask AI
+      </button>
+      <button class="library-btn" id="libraryBtn" aria-haspopup="dialog">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+        Library
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <div>
+        <p class="eyebrow">A smarter daily shuffle</p>
+        <h1>Business ideas,<br><span>one surprise at a time.</span></h1>
+      </div>
+      <p class="intro-copy">Press “Surprise me” for a fresh term. You’ll see every card before the deck repeats—and never the same one twice in a row.</p>
+    </section>
+
+    <section class="workspace" id="workspace" aria-live="polite">
+      <aside class="visual-panel">
+        <div class="visual-head">
+          <span class="category-chip" id="category">Finance</span>
+          <span class="deck-count" id="deckCount">50 in the deck</span>
+        </div>
+        <div class="visual-main">
+          <div class="monogram-wrap" aria-hidden="true">
+            <div class="term-art" id="termArt"></div>
+            <div class="monogram" id="monogram">CAPM</div>
+            <span class="orbit-dot"></span>
+          </div>
+          <h2 class="visual-title" id="termTitle">CAPM</h2>
+          <p class="visual-full" id="termFull">Capital Asset Pricing Model</p>
+        </div>
+        <div class="visual-foot">
+          <div>
+            <span class="learned-label">Explored</span>
+            <span class="learned-number" id="learnedNumber">0 / 50</span>
+          </div>
+          <div class="mini-bars" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+        </div>
+      </aside>
+
+      <article class="lesson-panel">
+        <div class="lesson-toolbar">
+          <div class="time-meta">
+            <span class="time-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg></span>
+            <span><span id="readTime">≈ 2 min</span><br><small id="wordCount">205 spoken words</small></span>
+          </div>
+          <div class="toolbar-actions">
+            <button class="icon-btn" id="copyBtn" title="Copy this explanation">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="8" width="11" height="11" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg><span>Copy</span>
+            </button>
+            <button class="icon-btn" id="shareBtn" title="Share this term">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.7 10.7 6.6-4.1M8.7 13.3l6.6 4.1"/></svg><span>Share</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="lesson-scroll" id="lessonContent" data-mobile-panel="overview">
+          <section class="karaoke" id="karaoke" aria-label="Live spoken transcript">
+            <div class="karaoke-head">
+              <span class="karaoke-title"><i class="live-dot" aria-hidden="true"></i> Live transcript</span>
+              <span class="karaoke-status" id="karaokeStatus">Ready</span>
+            </div>
+            <div class="karaoke-copy" id="karaokeText" aria-live="off"></div>
+            <div class="karaoke-track" role="progressbar" aria-label="Narration progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <span class="karaoke-progress" id="karaokeProgress"></span>
+            </div>
+          </section>
+          <nav class="mobile-tabs" id="mobileTabs" aria-label="Explanation sections">
+            <button class="active" data-panel="overview">Key idea</button>
+            <button data-panel="steps">3 steps</button>
+            <button data-panel="application">Use it</button>
+          </nav>
+          <p class="hook" id="hook"></p>
+          <p class="definition" id="definition"></p>
+          <h3 class="section-label steps-label">How it works</h3>
+          <ol class="steps" id="steps"></ol>
+          <div class="example-box">
+            <span class="example-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 22h4M8 13c-1.2-1-2-2.6-2-4.5a6 6 0 0 1 12 0c0 1.9-.8 3.5-2 4.5-.8.7-1 1.2-1 2H9c0-.8-.2-1.3-1-2Z"/></svg></span>
+            <div><h3>Picture it</h3><p id="example"></p></div>
+          </div>
+          <div class="two-col">
+            <div class="note"><h3 class="section-label">Why it matters</h3><p id="why"></p></div>
+            <div class="note"><h3 class="section-label">Watch out</h3><p id="watch"></p></div>
+          </div>
+          <div class="takeaway"><span class="takeaway-badge">✓</span><p id="remember"></p></div>
+        </div>
+
+        <div class="bottom-controls">
+          <button class="play-btn" id="playBtn" aria-label="Listen to this two-minute explanation">
+            <span class="play-disc" id="playDisc"><svg id="playIcon" viewBox="0 0 24 24" fill="currentColor"><path d="m8 5 11 7-11 7V5Z"/></svg></span>
+            <span class="play-copy"><span id="playLabel">Listen to explainer</span><small>Natural browser narration</small></span>
+          </button>
+          <div class="right-controls">
+            <button class="quiz-btn" id="quizBtn">Quick check</button>
+            <button class="next-btn" id="nextBtn">Surprise me <span class="kbd">N</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M14 7l5 5-5 5"/></svg></button>
+          </div>
+        </div>
+      </article>
+    </section>
+    <p class="page-foot">Made for quick, practical learning. Explanations are educational and are not financial, legal, or investment advice.</p>
+  </main>
+
+  <dialog id="quizDialog">
+    <div class="dialog-head">
+      <div><p>Quick check</p><h2>Which explanation matches <span id="quizTerm"></span>?</h2></div>
+      <button class="close-btn" id="closeQuiz" aria-label="Close quiz">×</button>
+    </div>
+    <div class="quiz-body">
+      <p class="quiz-question">Pick the best answer. The distractors are pulled from other cards in the deck.</p>
+      <div class="quiz-options" id="quizOptions"></div>
+      <p class="quiz-result" id="quizResult"></p>
+    </div>
+  </dialog>
+
+  <dialog class="ai-dialog" id="aiDialog">
+    <div class="ai-shell">
+      <header class="ai-head">
+        <div class="ai-identity">
+          <span class="ai-orb" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5zM19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg>
+          </span>
+          <div><h2>Business AI Coach</h2><p>Ask about definitions, differences, examples, or when to use a term</p></div>
+        </div>
+        <button class="close-btn" id="closeAi" aria-label="Close AI coach">×</button>
+      </header>
+      <div class="ai-messages" id="aiMessages" aria-live="polite"></div>
+      <div class="ai-suggestions" id="aiSuggestions" aria-label="Suggested questions">
+        <button class="ai-suggestion">Compare PEST and PESTLE</button>
+        <button class="ai-suggestion">Which terms help value a business?</button>
+        <button class="ai-suggestion">Explain WACC simply</button>
+        <button class="ai-suggestion">Give me a marketing quiz</button>
+      </div>
+      <form class="ai-form" id="aiForm">
+        <input class="ai-input" id="aiInput" autocomplete="off" maxlength="300" placeholder="Ask anything about these business terms…" aria-label="Question for the Business AI Coach" />
+        <button class="ai-send" type="submit" aria-label="Send question">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m4 4 17 8-17 8 3-8zM7 12h14"/></svg>
+        </button>
+        <p class="ai-note">Answers are generated from the built-in term knowledge in this app.</p>
+      </form>
+    </div>
+  </dialog>
+
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="drawer" id="drawer" aria-label="Term library">
+    <div class="drawer-head">
+      <div class="drawer-title"><div><p class="eyebrow">All 50 cards</p><h2>Term library</h2></div><button class="close-btn" id="closeDrawer" aria-label="Close library">×</button></div>
+      <label class="search-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+        <input class="search" id="search" type="search" placeholder="Search terms or categories…" />
+      </label>
+    </div>
+    <div class="term-list" id="termList"></div>
+  </aside>
+
+  <script>
+window.TERMS = [
+  {
+    id: "capm", term: "CAPM", full: "Capital Asset Pricing Model", category: "Finance", accent: "#FF6B4A",
+    hook: "Imagine comparing two mountain trails: one is calm and predictable, the other steep and exposed. You would only choose the dangerous trail if the view—or reward—were better.",
+    definition: "CAPM estimates the return investors should expect from an investment after considering market-wide risk. It links expected return to the risk-free rate, the market’s extra return, and beta, which measures how strongly the investment moves with the market.",
+    mechanics: ["Start with a risk-free return, often represented by government debt.", "Add the market risk premium multiplied by beta.", "A beta above one implies more market sensitivity; below one implies less."],
+    example: "Suppose government bonds yield 5%, the market is expected to return 11%, and a share has a beta of 1.2. CAPM gives 5% plus 1.2 times 6%, or an expected return of 12.2%. Investors can compare that required return with their own forecast.",
+    why: "Companies use CAPM when estimating the cost of equity, while investors use it as a benchmark for whether a risky asset appears rewarding enough.",
+    watch: "CAPM is a model, not a promise. Beta is based on historical behaviour, and real markets include company-specific risks, changing rates, and human emotion.",
+    remember: "More unavoidable market risk should come with more expected return."
+  },
+  {
+    id: "clt", term: "CLT", full: "Central Limit Theorem", category: "Data", accent: "#29B6A6",
+    hook: "Picture repeatedly scooping handfuls from a giant jar of mixed sweets and recording the average weight of each handful. The individual sweets vary wildly, but the averages begin to form a familiar bell shape.",
+    definition: "The Central Limit Theorem says that, with sufficiently large independent samples, the distribution of sample averages tends toward a normal distribution—even when the original population is not normal. Its centre approaches the population mean, and its spread is described by the standard error.",
+    mechanics: ["Draw many random, reasonably independent samples of the same size.", "Calculate a mean or sum for every sample.", "As sample size grows, those results become more normally distributed and less spread out."],
+    example: "A retailer cannot ask every customer about checkout time. It samples 50 customers each week and compares average waiting times. CLT lets analysts build confidence intervals and judge whether a change is probably real rather than random noise.",
+    why: "This theorem supports much of practical statistics: surveys, quality control, A/B tests, forecasting, and confidence intervals all rely on its logic.",
+    watch: "Large samples do not repair biased sampling or strongly dependent observations. Rare events and extremely heavy-tailed data may also need much larger samples.",
+    remember: "Messy individual data can produce orderly averages when sampling is sound."
+  },
+  {
+    id: "gaap", term: "GAAP", full: "Generally Accepted Accounting Principles", category: "Accounting", accent: "#7B61FF",
+    hook: "Think of financial reporting as a sport. If every company invented its own scoring system, comparing teams would be almost impossible. GAAP supplies the shared rulebook.",
+    definition: "GAAP is the body of accounting concepts, standards, and procedures used for preparing financial statements, especially in the United States. It guides when revenue and expenses are recognised, how assets are measured, and what information must be disclosed.",
+    mechanics: ["Use consistent recognition and measurement rules.", "Present statements such as the income statement, balance sheet, and cash-flow statement.", "Disclose important assumptions so readers can interpret the numbers."],
+    example: "If a software company receives a full year’s subscription payment today, GAAP generally prevents it from calling all the cash immediate revenue. Revenue is recognised as the service is delivered, giving a fairer picture of performance over time.",
+    why: "Shared rules improve comparability, credibility, auditability, and investor confidence. Lenders and managers can make decisions using statements built on a common foundation.",
+    watch: "GAAP compliance does not mean a business is healthy, and legitimate estimates still involve judgement. International companies may instead report under IFRS.",
+    remember: "GAAP makes financial stories comparable by giving accountants a common grammar."
+  },
+  {
+    id: "lean", term: "Lean Manufacturing", full: "Lean Manufacturing", category: "Operations", accent: "#F3B61F",
+    hook: "Imagine a restaurant kitchen where ingredients, people, and information travel in circles before a meal reaches the table. Lean asks which steps truly help the diner—and removes the rest.",
+    definition: "Lean Manufacturing is a management system for creating more customer value with fewer wasted resources. It improves flow by reducing activities such as waiting, defects, excess inventory, unnecessary movement, overproduction, and unused human talent.",
+    mechanics: ["Define value from the customer’s point of view.", "Map the value stream and remove steps that add no value.", "Create smooth pull-based flow, then keep improving it."],
+    example: "A factory notices workers walking across the floor for a frequently used tool. Moving the tool beside the workstation saves seconds on every unit. Combined with smaller batches and visual restocking signals, the change cuts lead time without making staff work faster.",
+    why: "Lean can lower cost, shorten delivery times, improve quality, and reveal problems earlier. It treats frontline employees as problem-solvers rather than merely labour.",
+    watch: "Lean does not mean blindly cutting people or inventory. Removing buffers without fixing unreliable processes can make the system fragile.",
+    remember: "Make value flow, and remove everything that prevents it from flowing."
+  },
+  {
+    id: "anova", term: "ANOVA", full: "Analysis of Variance", category: "Data", accent: "#29B6A6",
+    hook: "Suppose three shops use different window displays. Their sales differ—but are the displays responsible, or could ordinary day-to-day variation explain the gap? ANOVA helps answer that.",
+    definition: "Analysis of Variance is a statistical method for testing whether the means of three or more groups are equal. It compares variation between group averages with variation inside the groups and summarises that comparison in an F-statistic.",
+    mechanics: ["State a null hypothesis that all group means are equal.", "Separate total variation into between-group and within-group components.", "Use the F-test and a significance level to assess the evidence."],
+    example: "A company tests three onboarding programmes and measures new-hire productivity after one month. A significant ANOVA result suggests at least one programme performs differently. A follow-up test is then needed to identify which pairs differ.",
+    why: "ANOVA avoids running many separate t-tests, which would increase the chance of false positives. It is common in experiments, marketing tests, operations, and product research.",
+    watch: "A significant result does not show which group is different or whether the difference matters commercially. Assumptions about independence, variance, and residuals also deserve checking.",
+    remember: "ANOVA asks whether between-group differences are big relative to ordinary variation."
+  },
+  {
+    id: "black-scholes", term: "Black–Scholes Equation", full: "Black–Scholes Option Pricing Model", category: "Finance", accent: "#FF6B4A",
+    hook: "An option is like paying for the right—but not the obligation—to buy a concert ticket later at today’s agreed price. Its value depends on more than the ticket’s current price.",
+    definition: "The Black–Scholes model estimates a theoretical value for European-style options using the asset price, strike price, time to expiry, volatility, and risk-free interest rate. It formalised how uncertainty and time influence option value.",
+    mechanics: ["Compare the current asset price with the option’s strike price.", "Allow more time and volatility to increase the possibility of a favourable outcome.", "Discount future values using the risk-free rate."],
+    example: "Two call options have the same share and strike price, but one expires next week and the other in six months. The longer option normally costs more because there is more time for the share price to rise above the strike.",
+    why: "Traders use the model as a pricing benchmark and to calculate risk measures known as the Greeks. It also transformed how financial markets think about hedging.",
+    watch: "The model assumes simplified market behaviour, constant volatility, and continuous trading. Real options may allow early exercise, while prices can jump and transaction costs exist.",
+    remember: "An option’s price reflects price, time, uncertainty, rates, and the agreed strike."
+  },
+  {
+    id: "ebitda", term: "EBITDA", full: "Earnings Before Interest, Taxes, Depreciation and Amortisation", category: "Finance", accent: "#FF6B4A",
+    hook: "When comparing two cafés, you may first want to know how well their daily operations perform before considering loans, tax locations, or the age of their equipment. EBITDA attempts that first look.",
+    definition: "EBITDA is a measure of operating earnings before financing costs, taxes, and non-cash depreciation and amortisation charges. Analysts often use it to compare operating performance across firms with different capital structures or accounting histories.",
+    mechanics: ["Begin with net income and add back interest and tax.", "Add back depreciation and amortisation.", "Compare the result over time or with peers, often through an EBITDA margin."],
+    example: "A delivery company reports ₹10 crore in net income, ₹2 crore interest, ₹3 crore tax, and ₹5 crore depreciation. Its EBITDA is ₹20 crore. That highlights operating output before trucks wear down on the accounts.",
+    why: "EBITDA is useful in valuation multiples, lending covenants, and quick peer comparisons because it reduces some financing and accounting differences.",
+    watch: "EBITDA is not cash flow. Equipment eventually needs replacement, working capital consumes cash, and aggressive adjustments can make the number look flattering.",
+    remember: "EBITDA spotlights operations, but it does not pay the bills by itself."
+  },
+  {
+    id: "six-sigma", term: "Six Sigma", full: "Six Sigma", category: "Operations", accent: "#F3B61F",
+    hook: "If a process produced only a few faulty items out of a million, customers would experience remarkable consistency. Six Sigma is the disciplined pursuit of that kind of reliability.",
+    definition: "Six Sigma is a data-driven method for reducing defects and process variation. Its best-known improvement cycle is DMAIC: Define, Measure, Analyse, Improve, and Control. The name refers to extremely capable processes, though organisations apply it at many levels.",
+    mechanics: ["Define the customer problem and a measurable goal.", "Measure the current process and analyse root causes.", "Improve the process, then install controls so gains remain."],
+    example: "A bank receives frequent complaints about loan approval delays. The team maps the process, measures every hand-off, and discovers that incomplete applications create most rework. A clearer form and automated checks reduce both delay and variation.",
+    why: "Six Sigma turns vague quality complaints into measurable projects. It can reduce waste, errors, warranty claims, delays, and customer frustration.",
+    watch: "Not every problem needs a large statistical project. Excessive bureaucracy can slow creative work, and optimising one step may not improve the whole system.",
+    remember: "Define the problem, follow the data, fix the cause, and hold the gain."
+  },
+  {
+    id: "pestle", term: "PESTLE Analysis", full: "Political, Economic, Social, Technological, Legal and Environmental Analysis", category: "Strategy", accent: "#7B61FF",
+    hook: "A business does not operate inside a sealed room. Elections, inflation, lifestyles, technology, laws, and climate can reshape its future even when the business itself changes nothing.",
+    definition: "PESTLE is a structured scan of six external forces: Political, Economic, Social, Technological, Legal, and Environmental. It helps teams look beyond competitors and identify broad trends that could create opportunities or threats.",
+    mechanics: ["Collect credible signals under each of the six headings.", "Judge each signal’s likely impact, timing, and uncertainty.", "Translate the most important signals into strategic choices or scenarios."],
+    example: "An electric-scooter company might track transport subsidies, interest rates, urban commuting habits, battery advances, road regulations, and recycling rules. Together these factors shape demand, cost, and the permission to operate.",
+    why: "PESTLE reduces tunnel vision during market entry, annual planning, product launches, and risk reviews. It creates a shared picture of the wider environment.",
+    watch: "A long list is not a strategy. Teams should prioritise evidence-based factors and revisit them regularly because external conditions change.",
+    remember: "Scan the world outside the company before deciding what the company should do."
+  },
+  {
+    id: "pert", term: "PERT", full: "Program Evaluation and Review Technique", category: "Projects", accent: "#2F80ED",
+    hook: "Planning an unfamiliar project with one fixed duration is like predicting traffic with one number. PERT uses three estimates so uncertainty becomes visible.",
+    definition: "PERT is a project planning technique that maps dependent activities and estimates uncertain task durations. A common expected-time formula weights the most-likely estimate four times: optimistic plus four times most likely plus pessimistic, all divided by six.",
+    mechanics: ["List activities and show which tasks depend on others.", "Estimate optimistic, most-likely, and pessimistic durations.", "Calculate expected times and identify the longest dependent path."],
+    example: "A product team believes testing could take 4 weeks if everything works, 7 weeks normally, or 16 weeks if major bugs appear. PERT estimates 8 weeks: 4 plus 28 plus 16, divided by 6.",
+    why: "PERT makes uncertainty discussable and helps managers focus attention on activities most likely to delay the finish date.",
+    watch: "The answer depends on human estimates, and the classic formula can understate messy real-world risk. Dependencies and resource conflicts also need active management.",
+    remember: "PERT replaces a single confident guess with a structured range of possibilities."
+  },
+  {
+    id: "cpm", term: "CPM", full: "Critical Path Method", category: "Projects", accent: "#2F80ED",
+    hook: "In a relay race, some hand-offs directly determine the finishing time while others have spare room. CPM reveals the project tasks with no room to slip.",
+    definition: "The Critical Path Method maps project activities, durations, and dependencies to find the longest path through the network. Activities on that path determine the earliest possible completion date and typically have zero total float.",
+    mechanics: ["List tasks, durations, and predecessor relationships.", "Run forward and backward passes to calculate early and late dates.", "Focus control on the critical path while monitoring near-critical paths."],
+    example: "Opening a shop requires permits before construction, construction before inspection, and inspection before launch. Furniture selection can happen in parallel. If the permit-to-inspection chain is longest, a delay there delays opening; furniture may have some float.",
+    why: "CPM helps teams sequence work, allocate scarce resources, explain deadlines, and evaluate whether spending extra money to shorten a task is worthwhile.",
+    watch: "The critical path can change as actual durations change. A neat schedule also ignores quality, resource overload, and external shocks unless these are managed separately.",
+    remember: "The longest chain of dependencies controls the project’s shortest finish date."
+  },
+  {
+    id: "dcf", term: "DCF", full: "Discounted Cash Flow", category: "Finance", accent: "#FF6B4A",
+    hook: "Would you prefer ₹1 lakh today or the same ₹1 lakh five years from now? Money today can be invested and the future is uncertain, so the two amounts are not equally valuable.",
+    definition: "Discounted Cash Flow values an asset by forecasting the cash it may generate and converting each future amount into today’s money. The discount rate reflects the time value of money and the risk of receiving those cash flows.",
+    mechanics: ["Forecast free cash flows for an explicit period.", "Estimate a terminal value for cash flows beyond that period.", "Discount everything to the present and add the values."],
+    example: "If a project should deliver ₹110 next year and the appropriate discount rate is 10%, that future cash is worth ₹100 today. A full company valuation repeats this logic across many years and includes a terminal value.",
+    why: "DCF connects value to the economics of cash generation rather than only to current market mood. It is used for investments, acquisitions, projects, and strategic decisions.",
+    watch: "Small changes in growth or discount-rate assumptions can cause large valuation changes. A DCF should be treated as a range supported by scenarios, not a precise truth.",
+    remember: "Forecast the cash, adjust for time and risk, then bring it back to today."
+  },
+  {
+    id: "abc", term: "ABC", full: "Activity-Based Costing", category: "Accounting", accent: "#7B61FF",
+    hook: "Two products may use the same factory hours, but one requires constant inspections, custom orders, and support calls. Splitting overhead evenly would hide that difference.",
+    definition: "Activity-Based Costing assigns overhead costs to the activities that create them, then assigns those activity costs to products, services, or customers using cost drivers. It aims to reveal what truly consumes organisational resources.",
+    mechanics: ["Identify important activities such as setups, inspections, or deliveries.", "Create cost pools and select measurable cost drivers.", "Allocate activity costs according to each item’s actual use."],
+    example: "A furniture maker learns that small custom orders require many machine setups. ABC assigns more setup cost to those orders than to long standard runs, revealing that the custom line needs a different price or process.",
+    why: "Better cost visibility supports pricing, product mix, outsourcing, process improvement, and customer-profitability decisions.",
+    watch: "ABC can be expensive to maintain, and too many activities create false precision. Drivers should explain the cost well enough to justify the data effort.",
+    remember: "Products consume activities, and activities consume resources."
+  },
+  {
+    id: "aida", term: "AIDA Model", full: "Attention, Interest, Desire, Action", category: "Marketing", accent: "#E94E77",
+    hook: "A good sales message is a small journey. First it stops your scroll, then makes the offer relevant, helps you imagine the benefit, and finally gives you a clear next step.",
+    definition: "AIDA is a classic marketing model describing four stages of persuasion: Attention, Interest, Desire, and Action. It helps marketers structure advertisements, presentations, landing pages, and sales conversations around the customer’s changing questions.",
+    mechanics: ["Win attention with a relevant headline, image, or problem.", "Build interest with useful facts and turn features into desired outcomes.", "Reduce friction and ask for one clear action."],
+    example: "A language app leads with ‘Speak confidently on your next trip.’ It shows five-minute interactive lessons, shares a learner’s success story, and offers a free first lesson. Each element moves the visitor through AIDA.",
+    why: "The model prevents messages from jumping straight to ‘buy now’ before customers understand or want the value. It is a practical creative checklist.",
+    watch: "Real buying journeys are rarely linear. Customers loop, compare, seek proof, and return later, so research and measurement still matter.",
+    remember: "Catch the eye, earn attention, create wanting, and make action easy."
+  },
+  {
+    id: "consumer-persona", term: "Consumer Persona", full: "Consumer Persona", category: "Marketing", accent: "#E94E77",
+    hook: "‘Everyone’ is almost impossible to design for. A persona gives a team a vivid, evidence-based customer to keep in the room while decisions are made.",
+    definition: "A consumer persona is a fictional but research-grounded representation of a target customer segment. It combines behaviours, goals, frustrations, context, decision criteria, and sometimes demographics into a usable character.",
+    mechanics: ["Research customers through interviews, observation, surveys, and behaviour data.", "Cluster meaningful patterns instead of convenient stereotypes.", "Give each persona goals, situations, barriers, and decision triggers."],
+    example: "A budgeting app creates ‘First-job Asha,’ who receives a monthly salary, worries about overspending, and wants guidance without financial jargon. The team then tests whether onboarding, alerts, and pricing fit Asha’s real behaviours.",
+    why: "Personas create empathy and alignment across product, marketing, sales, and service teams. They turn abstract segments into concrete design questions.",
+    watch: "An invented profile built from opinions is just a stereotype. Personas should be backed by current evidence and updated when markets or behaviour change.",
+    remember: "A persona is a research tool for focus—not a decorative biography."
+  },
+  {
+    id: "bcg", term: "BCG Matrix", full: "Boston Consulting Group Matrix", category: "Strategy", accent: "#7B61FF",
+    hook: "A company’s product portfolio is like a garden: some plants grow quickly, some provide a steady harvest, some are promising seedlings, and some occupy space without much return.",
+    definition: "The BCG Matrix places business units or products on two dimensions: market growth and relative market share. The four labels are Stars, Cash Cows, Question Marks, and Dogs, each suggesting different investment conversations.",
+    mechanics: ["Estimate market growth and share relative to the largest competitor.", "Plot each product, often sizing bubbles by revenue.", "Discuss whether to invest, maintain, harvest, reposition, or exit."],
+    example: "A mature detergent brand with strong share may be a Cash Cow that funds a fast-growing health product, a Star. A weak offering in a booming segment is a Question Mark requiring a deliberate bet.",
+    why: "The matrix gives leadership a simple portfolio view and highlights that products need different goals and resources at different stages.",
+    watch: "Two axes oversimplify reality. Market definitions, profit margins, synergies, and disruption matter, so the matrix should start a discussion rather than end it.",
+    remember: "Balance today’s cash generators with tomorrow’s growth bets."
+  },
+  {
+    id: "porters-five", term: "Porter’s Five Forces", full: "Porter’s Five Forces", category: "Strategy", accent: "#7B61FF",
+    hook: "A popular market is not automatically a profitable market. Profit can be squeezed by powerful buyers, suppliers, substitutes, rivals, or newcomers.",
+    definition: "Porter’s Five Forces is a framework for analysing an industry’s competitive structure: rivalry among existing firms, threat of new entrants, threat of substitutes, bargaining power of buyers, and bargaining power of suppliers.",
+    mechanics: ["Define the industry and customers carefully.", "Assess the strength and drivers of each force.", "Choose a position or action that improves bargaining power and differentiation."],
+    example: "In commercial airlines, intense rivalry, price-sensitive travellers, substitute transport on short routes, and powerful aircraft suppliers can limit profits even when passenger demand grows.",
+    why: "The framework shifts attention from a list of named competitors to the economic forces that influence prices, costs, investment needs, and sustainable returns.",
+    watch: "Forces are not static. Regulation, platforms, technology, and complementors can rapidly alter an industry, so analysis must be refreshed and combined with company capabilities.",
+    remember: "Industry profitability depends on who can pressure the value you create."
+  },
+  {
+    id: "cac", term: "CAC", full: "Customer Acquisition Cost", category: "Growth", accent: "#E94E77",
+    hook: "Revenue from a new customer feels exciting, but first ask what it cost to win that customer. Growth can destroy value when acquisition is too expensive.",
+    definition: "Customer Acquisition Cost is the average sales and marketing cost required to acquire one new customer during a period. A simple calculation divides eligible acquisition spending by the number of newly acquired customers.",
+    mechanics: ["Choose a consistent period and define what counts as a new customer.", "Include relevant advertising, sales salaries, tools, commissions, and agency costs.", "Compare CAC with customer lifetime value and payback time."],
+    example: "If a business spends ₹10 lakh on acquisition in a quarter and wins 1,000 customers, blended CAC is ₹1,000. Channel-level analysis might reveal that referrals cost ₹300 while paid search costs ₹1,600.",
+    why: "CAC helps companies price products, allocate marketing budgets, test channels, plan cash needs, and judge whether growth is economically sustainable.",
+    watch: "Attribution is imperfect, and blended CAC can hide expensive segments. Fast growth may also raise CAC as the easiest audiences are exhausted.",
+    remember: "A customer is not profitable merely because they were acquired."
+  },
+  {
+    id: "ltv", term: "LTV", full: "Customer Lifetime Value", category: "Growth", accent: "#E94E77",
+    hook: "A customer’s first purchase is only one frame of the film. LTV estimates the value of the entire relationship.",
+    definition: "Customer Lifetime Value estimates the gross profit or contribution a customer will generate over their relationship with a business. Subscription companies often combine average revenue, gross margin, and expected retention or churn.",
+    mechanics: ["Measure revenue or contribution per customer over time.", "Estimate retention, repeat purchase behaviour, and service costs.", "Discount future contribution when a more rigorous valuation is needed."],
+    example: "A service earns ₹1,000 per month at a 70% gross margin, and an average customer remains for 20 months. A simplified LTV is ₹14,000 before discounting and other variable support costs.",
+    why: "LTV guides acquisition spending, retention investment, pricing, segmentation, and customer service. The ratio of LTV to CAC is a popular signal of unit economics.",
+    watch: "LTV is a forecast, not money already earned. Young cohorts, changing churn, and average figures can create false confidence, so cohort analysis is important.",
+    remember: "Value the relationship, not only the first transaction."
+  },
+  {
+    id: "esg", term: "ESG", full: "Environmental, Social and Governance", category: "Sustainability", accent: "#20A464",
+    hook: "A company affects more than quarterly profit. It uses resources, employs people, works with communities, and is directed by leaders whose incentives shape behaviour.",
+    definition: "ESG is a lens for evaluating environmental, social, and governance factors that may affect a company and its stakeholders. Topics include emissions, labour practices, product safety, board oversight, ethics, and shareholder rights.",
+    mechanics: ["Identify ESG issues material to the industry and business model.", "Set measurable policies, targets, ownership, and controls.", "Report evidence and connect the issues to risk, opportunity, and capital allocation."],
+    example: "For a cement company, carbon intensity and worker safety may be material. For a software platform, data privacy, content governance, and workforce practices may be more important.",
+    why: "Well-used ESG analysis can reveal regulatory risk, operating efficiency, reputation, resilience, and innovation opportunities that traditional financial statements may not show directly.",
+    watch: "Scores vary across providers, broad labels can hide trade-offs, and marketing claims without evidence create greenwashing risk. Materiality and measurable outcomes matter.",
+    remember: "ESG asks how non-financial conduct can create financial and stakeholder consequences."
+  },
+  {
+    id: "arr", term: "ARR", full: "Annual Recurring Revenue", category: "Growth", accent: "#E94E77",
+    hook: "A subscription business starts each year with some revenue already contracted or highly predictable. ARR is the annualised size of that recurring base.",
+    definition: "Annual Recurring Revenue measures recurring subscription revenue normalised to a one-year period. It typically excludes one-time setup fees, usage spikes, hardware sales, and other non-recurring income.",
+    mechanics: ["Identify active recurring contracts and their current recurring value.", "Convert monthly or multi-year amounts into annual equivalents.", "Track new ARR, expansion, contraction, and churn as a movement bridge."],
+    example: "A software firm has 100 customers paying ₹10,000 per month. Its simple ARR is ₹1.2 crore: monthly recurring revenue of ₹10 lakh multiplied by twelve.",
+    why: "ARR gives subscription companies a consistent scale and momentum measure. It supports forecasting, valuation discussions, sales targets, retention analysis, and capacity planning.",
+    watch: "ARR is not recognised revenue or cash. Definitions vary, and annualising short-term or cancellable contracts can overstate predictability. Always explain the calculation.",
+    remember: "ARR is the annualised recurring run-rate, not every rupee collected."
+  },
+  {
+    id: "toc", term: "TOC", full: "Theory of Constraints", category: "Operations", accent: "#F3B61F",
+    hook: "A chain cannot become stronger by polishing every link equally. The weakest link sets the limit. In a business process, one constraint often governs total output.",
+    definition: "The Theory of Constraints is a management approach for improving a system by identifying and managing its most important limiting factor. Its five focusing steps are identify, exploit, subordinate, elevate, and then repeat.",
+    mechanics: ["Find the constraint that limits the system’s goal.", "Use it effectively and align other work so it is not starved or blocked.", "Increase its capacity if needed, then search for the new constraint."],
+    example: "A bakery can mix 500 loaves daily but its oven bakes only 300. Buying a faster mixer achieves nothing. Scheduling the oven carefully, reducing changeovers, and later adding oven capacity improves total throughput.",
+    why: "TOC prevents local optimisation and focuses scarce attention on the change with the greatest system-wide impact.",
+    watch: "Constraints can be policies, demand, skills, or information—not only machines. Once one moves, old rules and metrics may keep people optimising the wrong place.",
+    remember: "Improve the constraint first, because the system cannot outrun it."
+  },
+  {
+    id: "blue-ocean", term: "Blue Ocean Strategy", full: "Blue Ocean Strategy", category: "Strategy", accent: "#7B61FF",
+    hook: "Instead of fighting competitors in crowded red water, imagine creating a new space where the old rules matter less. That is the metaphor behind a blue ocean.",
+    definition: "Blue Ocean Strategy seeks uncontested market space through value innovation: increasing buyer value while changing or lowering the cost structure. It asks firms to redefine what an industry competes on rather than merely outperform rivals.",
+    mechanics: ["Study alternatives and noncustomers, not only direct competitors.", "Decide which factors to eliminate, reduce, raise, and create.", "Build an offering whose value curve clearly differs from the industry."],
+    example: "Cirque du Soleil removed expensive animal acts and star performers, elevated theatre and atmosphere, and attracted adults willing to pay more than a traditional circus ticket.",
+    why: "The framework encourages strategic creativity, new demand, and differentiation that is tied to economics rather than novelty alone.",
+    watch: "Truly uncontested markets are rare and success attracts imitation. New value must solve a real customer problem, and execution still requires capabilities and discipline.",
+    remember: "Change the basis of competition instead of accepting the existing game."
+  },
+  {
+    id: "monte-carlo", term: "Monte Carlo Simulation", full: "Monte Carlo Simulation", category: "Data", accent: "#29B6A6",
+    hook: "One forecast gives one future. Monte Carlo simulation rolls the dice thousands of times to show a landscape of possible futures and how often each appears.",
+    definition: "Monte Carlo simulation models uncertainty by assigning probability distributions to uncertain inputs, repeatedly sampling from them, and calculating the resulting outcomes. The output is a distribution rather than a single estimate.",
+    mechanics: ["Build a model linking inputs to the outcome you care about.", "Describe uncertain inputs with realistic ranges and distributions.", "Run many trials, then analyse probabilities, percentiles, and drivers."],
+    example: "A project’s demand, price, material cost, and launch date are uncertain. Ten thousand simulated combinations may show a 72% chance of positive value and a 10% chance of losing more than ₹5 crore.",
+    why: "Simulation improves risk conversations in finance, supply chains, projects, insurance, and capacity planning because it makes ranges and tail outcomes visible.",
+    watch: "A sophisticated simulation cannot rescue weak assumptions. Correlations, rare events, and the shape of input distributions need careful thought and transparent testing.",
+    remember: "Model many plausible worlds, then decide with the full range in view."
+  },
+  {
+    id: "time-series", term: "Time Series Analysis", full: "Time Series Analysis", category: "Data", accent: "#29B6A6",
+    hook: "Data points have memory when they arrive in time order. Monday’s demand, last month’s sales, and yesterday’s exchange rate may help explain what happens next.",
+    definition: "Time Series Analysis studies observations ordered through time. It looks for trend, seasonality, cycles, structural changes, and autocorrelation, then uses those patterns to describe behaviour or forecast future values.",
+    mechanics: ["Plot and clean the sequence without losing time order.", "Separate trend and seasonal patterns where useful.", "Fit and validate a model using later periods rather than randomised rows."],
+    example: "A retailer sees demand rise every weekend and sharply before Diwali. A time-series model combines the long-term trend with weekly and festival effects to plan inventory and staffing.",
+    why: "Good time-series work supports sales forecasts, cash planning, anomaly detection, pricing, maintenance, and economic analysis.",
+    watch: "Past patterns may break after policy changes, shocks, or new competitors. Correlation over time is not causation, and data leakage can make forecasts appear unrealistically accurate.",
+    remember: "Respect the order of the data, because time carries information."
+  },
+  {
+    id: "wacc", term: "WACC", full: "Weighted Average Cost of Capital", category: "Finance", accent: "#FF6B4A",
+    hook: "A company finances itself with a mixture of owners’ money and borrowed money. WACC blends the required return of both sources into one overall hurdle rate.",
+    definition: "WACC is the weighted average return required by a company’s debt and equity investors. Equity and after-tax debt costs are weighted by their market values in the capital structure.",
+    mechanics: ["Estimate the cost of equity, often using CAPM.", "Estimate the effective cost of debt after the tax shield.", "Weight each cost by its share of total market-value financing."],
+    example: "If a company is 60% equity costing 12% and 40% debt costing 6% after tax, its WACC is 9.6%: 0.6 times 12% plus 0.4 times 6%.",
+    why: "WACC is commonly used to discount operating cash flows and as a hurdle rate for projects with risk similar to the existing business.",
+    watch: "Book-value weights, stale rates, or one company-wide hurdle for very different projects can mislead. Capital structure and market conditions also change.",
+    remember: "WACC is the blended price the company pays for financing."
+  },
+  {
+    id: "mece", term: "MECE", full: "Mutually Exclusive, Collectively Exhaustive", category: "Decision", accent: "#2F80ED",
+    hook: "A well-organised wardrobe has no item in two drawers and no item left on the floor. MECE applies the same clean logic to ideas and problems.",
+    definition: "MECE is a structuring principle: categories should not overlap—mutually exclusive—and together they should cover the whole relevant subject—collectively exhaustive. It is widely used in consulting, analysis, and communication.",
+    mechanics: ["Define the question and the boundary of the analysis.", "Split the subject using one consistent organising logic.", "Check for overlaps, gaps, and items that do not fit."],
+    example: "To analyse profit, splitting it into revenue and cost is cleaner than splitting it into sales, marketing, and expenses, where categories may overlap. Revenue can then be broken into price and volume.",
+    why: "MECE structures reduce double counting, expose missing issues, divide work clearly, and make complex arguments easier to follow.",
+    watch: "Reality is not always tidy. Forcing ambiguity into rigid boxes can hide relationships, and ‘collectively exhaustive’ should match the decision rather than include every imaginable detail.",
+    remember: "No overlaps, no important gaps, one clear logic."
+  },
+  {
+    id: "cct", term: "CCT", full: "Core Competence Theory", category: "Strategy", accent: "#7B61FF",
+    hook: "A company’s most valuable strength may not be a single product. It may be a deep capability that can create many products and is difficult for competitors to copy.",
+    definition: "Core Competence Theory argues that advantage comes from collective skills, technologies, and learning embedded across an organisation. A true core competence provides customer value, opens access to multiple markets, and is hard to imitate.",
+    mechanics: ["Look beneath products for shared know-how and coordinated capabilities.", "Test whether the capability matters to customers and travels across markets.", "Invest, protect, and apply it without defining it too broadly."],
+    example: "A company skilled in miniaturised motors may apply that competence to fans, medical devices, cameras, and tools. The products change, but the underlying expertise keeps generating options.",
+    why: "The idea informs capability investment, partnerships, diversification, outsourcing, and long-term strategy. It helps leaders avoid becoming trapped by today’s product categories.",
+    watch: "A claimed competence is not automatically distinctive, and old strengths can become rigidities. Companies still need market insight and must renew capabilities over time.",
+    remember: "Compete through hard-to-copy capabilities that can create value in many places."
+  },
+  {
+    id: "bmc", term: "BMC", full: "Business Model Canvas", category: "Innovation", accent: "#00A6A6",
+    hook: "A business model can disappear inside a long plan. The Business Model Canvas puts its moving parts on one page so the team can see how they fit.",
+    definition: "The Business Model Canvas is a visual framework with nine blocks: customer segments, value propositions, channels, customer relationships, revenue streams, key resources, key activities, key partners, and cost structure.",
+    mechanics: ["Start with the customer problem and the value proposition.", "Map how value is delivered, supported, and paid for.", "Treat assumptions as hypotheses to test, not facts to decorate."],
+    example: "A meal-subscription startup maps busy professionals, healthy convenience, app ordering, kitchen partners, delivery operations, subscriptions, and food and logistics costs. Weak connections become visible immediately.",
+    why: "The canvas creates a shared language for founders, corporate teams, and investors. It supports rapid comparison of alternative business models before detailed planning.",
+    watch: "A neat canvas is not evidence. Numbers, experiments, competitive dynamics, and execution plans must follow, and the blocks need frequent updating.",
+    remember: "See how the business creates, delivers, and captures value on one page."
+  },
+  {
+    id: "okr", term: "OKR", full: "Objectives and Key Results", category: "Leadership", accent: "#2F80ED",
+    hook: "‘Improve the product’ sounds inspiring but cannot guide trade-offs. OKRs pair a meaningful direction with evidence that tells the team whether it moved.",
+    definition: "OKR is a goal-setting system built from an Objective—a clear, qualitative outcome—and a small set of Key Results—specific, measurable evidence of achievement. Initiatives are the work undertaken to move those results.",
+    mechanics: ["Write a focused objective that explains the desired change.", "Choose measurable key results based on outcomes, not task completion.", "Review progress often, learn, and adjust initiatives."],
+    example: "Objective: make onboarding effortless. Key results might be raising activation from 45% to 65%, cutting setup time from 20 to 8 minutes, and reducing first-week support tickets by 30%.",
+    why: "OKRs can align teams, make priorities visible, connect daily work to outcomes, and encourage transparent learning across functions.",
+    watch: "Too many OKRs destroy focus. If key results are only output lists or are tied mechanically to compensation, teams may game numbers rather than improve outcomes.",
+    remember: "The objective names the destination; key results prove you arrived."
+  },
+  {
+    id: "pest", term: "PEST Analysis", full: "Political, Economic, Social and Technological Analysis", category: "Strategy", accent: "#7B61FF",
+    hook: "Before entering a market, a company should look up from its own spreadsheet and examine the political climate, economy, society, and technology around it.",
+    definition: "PEST Analysis scans four major macro-environmental forces: Political, Economic, Social, and Technological. It is the compact predecessor to PESTLE and helps organisations spot outside shifts that may alter demand, costs, or feasibility.",
+    mechanics: ["Gather current evidence and leading indicators under each heading.", "Rate likely impact, timing, direction, and uncertainty.", "Connect priority factors to choices, scenarios, and monitoring signals."],
+    example: "A digital bank studies licensing policy, interest and inflation trends, trust in mobile payments, and smartphone or identity technology before deciding how and where to launch.",
+    why: "PEST gives strategy teams a repeatable way to discuss external change and avoid building plans solely from internal assumptions.",
+    watch: "The four boxes can produce a generic list. Prioritise factors that can change a decision, show evidence, and remember that categories often interact.",
+    remember: "Strategy begins with the environment, not just the organisation."
+  },
+  {
+    id: "eva", term: "EVA", full: "Economic Value Added", category: "Finance", accent: "#FF6B4A",
+    hook: "A company can report accounting profit and still fail to reward the investors whose capital it uses. EVA asks whether profit cleared the full cost of that capital.",
+    definition: "Economic Value Added measures operating profit after tax minus a capital charge. The capital charge equals invested capital multiplied by the weighted average cost of capital.",
+    mechanics: ["Calculate net operating profit after tax, or NOPAT.", "Measure the capital invested in operations.", "Subtract invested capital times WACC from NOPAT."],
+    example: "A business earns ₹15 crore NOPAT, uses ₹100 crore of capital, and has a 10% WACC. The capital charge is ₹10 crore, so EVA is positive ₹5 crore.",
+    why: "EVA encourages managers to consider both income and the resources required to produce it. It can guide investment, portfolio, and incentive decisions.",
+    watch: "Accounting adjustments can be complex, WACC is estimated, and pressure for immediate positive EVA may discourage worthwhile long-term investment.",
+    remember: "Value is created only after operating profit covers the full cost of capital."
+  },
+  {
+    id: "breakeven", term: "BEV", full: "Break-Even Analysis", category: "Finance", accent: "#FF6B4A",
+    hook: "Every sale contributes something toward fixed costs. The break-even point is the moment those contributions have covered the fixed bill and profit finally reaches zero.",
+    definition: "Break-Even Analysis calculates the sales volume or revenue at which total revenue equals total cost. In a simple single-product model, break-even units equal fixed costs divided by selling price minus variable cost per unit.",
+    mechanics: ["Separate costs into fixed and variable components.", "Calculate contribution per unit or contribution margin ratio.", "Divide fixed costs by contribution to find the zero-profit threshold."],
+    example: "A workshop has ₹5 lakh monthly fixed costs. A product sells for ₹1,000 and has ₹600 variable cost, leaving ₹400 contribution. It must sell 1,250 units to break even.",
+    why: "The tool supports pricing, launch decisions, capacity planning, sales targets, and scenario analysis. It makes the economics of volume easy to communicate.",
+    watch: "Real prices, costs, and product mixes change with volume. Break-even says nothing about demand quality, cash timing, or whether zero profit is an acceptable goal.",
+    remember: "Break even when total contribution exactly covers fixed cost."
+  },
+  {
+    id: "digital-twin", term: "Digital Twin", full: "Digital Twin", category: "Technology", accent: "#00A6A6",
+    hook: "Imagine a living virtual copy of a wind turbine that updates as the real turbine spins, heats, vibrates, and wears. Engineers can study the copy before touching the machine.",
+    definition: "A digital twin is a dynamic digital representation of a physical asset, process, or system. It combines models with real or near-real-time data to monitor condition, simulate behaviour, and support decisions.",
+    mechanics: ["Instrument the physical system and collect trustworthy data.", "Build a model that represents relevant behaviour and context.", "Use feedback, simulation, and prediction to improve the real system."],
+    example: "An airline models each engine using sensor data. The twin can flag unusual vibration, estimate remaining component life, and help schedule maintenance before a disruptive failure.",
+    why: "Digital twins can improve reliability, design, training, energy use, throughput, and scenario testing while reducing risky physical experiments.",
+    watch: "A 3D picture alone is not a twin. Data quality, cybersecurity, model drift, integration cost, and a clear decision use case determine whether it creates value.",
+    remember: "A useful digital twin is connected, dynamic, and built to improve a real decision."
+  },
+  {
+    id: "big-data", term: "Big Data", full: "Big Data", category: "Technology", accent: "#00A6A6",
+    hook: "When data becomes too large, fast, or varied for traditional tools, the challenge is no longer simply storing a spreadsheet—it is building a system that can turn scale into reliable insight.",
+    definition: "Big Data describes datasets and processing challenges often characterised by volume, velocity, variety, veracity, and value. It includes structured tables as well as text, images, sensor streams, clicks, and other complex sources.",
+    mechanics: ["Capture and govern data from relevant sources.", "Store and process it with scalable architectures.", "Analyse it with clear questions while protecting quality, privacy, and security."],
+    example: "A retailer combines millions of purchases, web events, inventory signals, and delivery records to forecast local demand and identify unusual transactions in near real time.",
+    why: "Used well, large-scale data can improve personalisation, fraud detection, operations, science, forecasting, and automation.",
+    watch: "More data is not automatically better. Bias, weak definitions, privacy harm, security risk, and spurious patterns can grow with scale. Value begins with a decision, not a data lake.",
+    remember: "Big data needs big discipline, not only big storage."
+  },
+  {
+    id: "big-five", term: "Big 5 Model", full: "Five-Factor Model of Personality", category: "People", accent: "#A65AC7",
+    hook: "Personality is richer than a four-letter box. The Big Five describes people along five continuous dimensions rather than placing everyone into fixed types.",
+    definition: "The Big Five personality model covers Openness to experience, Conscientiousness, Extraversion, Agreeableness, and Neuroticism—often remembered as OCEAN. Each trait is a spectrum, and a person has a score on every one.",
+    mechanics: ["Use a validated questionnaire rather than casual judgement.", "Interpret each dimension as a tendency, not a destiny.", "Combine trait information with skills, motivation, role, and context."],
+    example: "A highly conscientious employee may prefer planning and reliable follow-through, while someone high in openness may enjoy novel ideas. Neither profile guarantees job performance across all roles.",
+    why: "The model is widely researched and can support self-awareness, coaching, team conversations, and organisational research when used responsibly.",
+    watch: "Personality tests should not stereotype or become the sole basis for hiring. Scores can vary with measurement and context, and they do not capture the whole person.",
+    remember: "Five broad spectrums describe tendencies; they do not define limits."
+  },
+  {
+    id: "mbti", term: "MBTI", full: "Myers–Briggs Type Indicator", category: "People", accent: "#A65AC7",
+    hook: "Some people recharge through social interaction, while others prefer reflection. MBTI turns preferences like these into a memorable four-letter type for discussion.",
+    definition: "The Myers–Briggs Type Indicator groups preferences across four pairs: Extraversion or Introversion, Sensing or Intuition, Thinking or Feeling, and Judging or Perceiving. Combining the preferences produces sixteen reported types.",
+    mechanics: ["Complete the instrument and receive a preference profile.", "Explore how the preferences may shape communication and decision styles.", "Use the result as a conversation starter rather than a fixed label."],
+    example: "A team may discuss why one member wants detailed facts before brainstorming while another starts with possibilities. The language can encourage accommodation without declaring either style superior.",
+    why: "MBTI is popular in workshops because it is accessible, non-clinical, and gives teams a shared vocabulary for differences.",
+    watch: "Researchers question its reliability and type boundaries; people can receive different results over time. It should not decide selection, promotion, or capability.",
+    remember: "Use MBTI to open a conversation, never to close a box around someone."
+  },
+  {
+    id: "mars", term: "MARS Model", full: "Motivation, Ability, Role Perceptions and Situational Factors", category: "People", accent: "#A65AC7",
+    hook: "When performance falls, blaming motivation is tempting. MARS asks four questions: do people want to act, can they act, know what to do, and have the conditions to do it?",
+    definition: "The MARS Model explains individual behaviour and performance through four factors: Motivation, Ability, Role Perceptions, and Situational Factors. Strong performance generally requires all four; a serious gap in one can limit the rest.",
+    mechanics: ["Check motivation: direction, intensity, and persistence of effort.", "Check ability and whether the person understands the role.", "Remove situational barriers such as missing tools, time, information, or support."],
+    example: "A salesperson misses targets despite strong effort. MARS analysis shows good motivation and skill, but the territory data are outdated and no one has clarified the new product priority. The solution is not another motivational speech.",
+    why: "The model encourages managers to diagnose before intervening. It supports coaching, job design, training, communication, and fairer performance conversations.",
+    watch: "The four factors influence one another and can change over time. The model is a diagnostic checklist, not a formula for judging someone’s character.",
+    remember: "Performance needs the will, the skill, role clarity, and a workable situation."
+  },
+  {
+    id: "balanced-scorecard", term: "Balanced Scorecard", full: "Balanced Scorecard", category: "Leadership", accent: "#2F80ED",
+    hook: "Driving a company using only last quarter’s profit is like driving while looking only in the rear-view mirror. A balanced scorecard adds indicators of future performance.",
+    definition: "The Balanced Scorecard translates strategy into linked objectives and measures across four classic perspectives: financial, customer, internal process, and learning and growth. The perspectives connect capabilities and processes to customer and financial outcomes.",
+    mechanics: ["Clarify the strategy and show cause-and-effect objectives.", "Choose a few measures, targets, and initiatives for each perspective.", "Review the whole system rather than optimising one metric."],
+    example: "A hotel tracks profit and revenue, guest loyalty, room turnaround quality, and employee training. Faster, more reliable service should improve guest experience, which should then strengthen financial results.",
+    why: "The scorecard aligns departments, balances leading and lagging indicators, and turns broad strategy into an operating conversation.",
+    watch: "A crowded dashboard is not a scorecard. Measures need strategic links, clear ownership, and protection against gaming or local optimisation.",
+    remember: "Measure the capabilities and processes that create tomorrow’s financial results."
+  },
+  {
+    id: "ansoff", term: "Ansoff Matrix", full: "Ansoff Matrix", category: "Strategy", accent: "#7B61FF",
+    hook: "Growth becomes easier to discuss when you ask two questions: are the products new or existing, and are the markets new or existing?",
+    definition: "The Ansoff Matrix organises growth options into four strategies: market penetration, market development, product development, and diversification. Risk generally increases as the company moves toward unfamiliar products and markets.",
+    mechanics: ["Sell more existing products to existing markets through penetration.", "Take existing products to new markets, or new products to current markets.", "Use diversification when both the product and the market are new."],
+    example: "A tea company can increase share at home, enter another country, launch a new herbal line for current buyers, or diversify into wellness retreats. Each move requires different knowledge and capabilities.",
+    why: "The matrix makes growth choices explicit and encourages leaders to match ambition with risk, investment, and organisational readiness.",
+    watch: "The four boxes do not prove demand or explain execution. Boundaries can be fuzzy, and even market penetration can be risky in a changing industry.",
+    remember: "Growth risk rises as products and markets become less familiar."
+  },
+  {
+    id: "product-life-cycle", term: "Product Life Cycle", full: "Product Life Cycle", category: "Marketing", accent: "#E94E77",
+    hook: "Products often behave like living things: they are introduced, grow, mature, and may decline. Each stage calls for different decisions.",
+    definition: "The Product Life Cycle describes four broad market stages—introduction, growth, maturity, and decline—based on how sales, competition, and profitability evolve over time.",
+    mechanics: ["Introduction builds awareness and proves product-market fit.", "Growth scales distribution while competitors enter.", "Maturity defends share and efficiency; decline triggers renewal, harvesting, or exit."],
+    example: "A new wearable begins with low sales and heavy education. If adoption accelerates, rivals appear and distribution expands. Later, upgrades become incremental and price competition rises before demand shifts to a new category.",
+    why: "The concept helps teams adapt pricing, promotion, capacity, investment, and portfolio goals as market conditions change.",
+    watch: "Not every product follows a smooth curve. Categories can revive, fashions can collapse, and managers may mistakenly cause decline by withdrawing support too soon.",
+    remember: "Match the strategy to the market stage instead of managing every product the same way."
+  },
+  {
+    id: "diffusion", term: "Diffusion of Innovation", full: "Diffusion of Innovation", category: "Innovation", accent: "#00A6A6",
+    hook: "A new idea rarely spreads to everyone at once. A few experiment early, others wait for proof, and some adopt only when the old option disappears.",
+    definition: "Diffusion of Innovation explains how new ideas and technologies spread through a social system over time. It describes innovators, early adopters, early majority, late majority, and laggards.",
+    mechanics: ["Show a clear relative advantage over the current practice.", "Reduce complexity and support trial, observation, and compatibility.", "Use trusted social proof as adoption moves beyond enthusiasts."],
+    example: "An electric vehicle first appeals to technology enthusiasts willing to accept limitations. Wider adoption requires charging access, reliability evidence, familiar financing, service networks, and recommendations from ordinary drivers.",
+    why: "The model helps product and policy teams design launch sequences, communication, pilots, and support for groups with different risk tolerance.",
+    watch: "The categories are descriptive, not permanent personality labels. Adoption also depends on price, infrastructure, power, regulation, and whether the innovation is actually useful.",
+    remember: "Different groups need different proof before a new idea feels safe to adopt."
+  },
+  {
+    id: "probability-distribution", term: "Probability Distribution", full: "Probability Distribution", category: "Data", accent: "#29B6A6",
+    hook: "A forecast should not only name what might happen; it should describe how likely the different outcomes are. A probability distribution does exactly that.",
+    definition: "A probability distribution assigns probabilities to the possible values of a random variable. Discrete distributions cover countable outcomes, while continuous distributions describe ranges using areas under a curve.",
+    mechanics: ["Define the uncertain variable and its possible values.", "Choose or estimate a distribution using evidence and domain knowledge.", "Summarise its centre, spread, shape, and important tail probabilities."],
+    example: "Daily support calls might follow a count distribution, while delivery time may be modelled with a continuous, right-skewed distribution. Managers can then plan staffing for a chosen service level.",
+    why: "Distributions power risk models, quality control, experiments, forecasting, insurance, simulation, and decision-making under uncertainty.",
+    watch: "The familiar normal curve is not appropriate for every problem. Historical data may be scarce, changing, or missing rare events, so assumptions should be tested.",
+    remember: "A distribution maps possible outcomes to how plausible they are."
+  },
+  {
+    id: "kaizen", term: "Kaizen", full: "Kaizen — Continuous Improvement", category: "Operations", accent: "#F3B61F",
+    hook: "Big transformations attract attention, but hundreds of small improvements can quietly reshape quality, cost, safety, and morale. That is the spirit of Kaizen.",
+    definition: "Kaizen is a Japanese approach to continuous improvement through frequent, practical changes involving people close to the work. It values observation, standardisation, problem-solving, and learning rather than waiting for rare breakthrough projects.",
+    mechanics: ["Go to the workplace and understand the current condition.", "Test a small change using a plan-do-check-act cycle.", "Standardise what works and begin the next improvement."],
+    example: "A clinic team rearranges supplies so nurses no longer cross the room for every patient. The small test saves time, reduces interruption, and becomes the new standard before another issue is tackled.",
+    why: "Kaizen builds improvement capability into daily work, often producing durable gains with modest investment and stronger employee ownership.",
+    watch: "Small steps cannot replace necessary structural change. Improvement also fails when leaders demand suggestions but provide no time, safety, or authority to act.",
+    remember: "Improve the work a little, learn, standardise, and repeat."
+  },
+  {
+    id: "irr", term: "IRR", full: "Internal Rate of Return", category: "Finance", accent: "#FF6B4A",
+    hook: "If an investment were a savings account, what annual rate would make its future cash receipts exactly justify today’s cost? That rate is the intuition behind IRR.",
+    definition: "Internal Rate of Return is the discount rate that makes an investment’s net present value equal to zero. Projects are often compared with a required return or hurdle rate.",
+    mechanics: ["List the project’s timed cash outflows and inflows.", "Find the discount rate at which their present values sum to zero.", "Compare that rate with the hurdle rate and review the NPV."],
+    example: "A project requiring ₹100 today and returning ₹60 after one year plus ₹60 after two years has an IRR a little above 13%. If its risk-adjusted hurdle is 10%, it may look attractive.",
+    why: "IRR expresses project economics as an intuitive percentage and is widely used in capital budgeting, private equity, and real estate.",
+    watch: "Unusual cash-flow patterns can create multiple IRRs, and IRR can favour a high percentage on a small project over more total value. Use NPV alongside it.",
+    remember: "IRR is the break-even discount rate for an investment’s cash flows."
+  },
+  {
+    id: "risk-uncertainty", term: "Risk & Uncertainty", full: "Risk and Uncertainty", category: "Decision", accent: "#2F80ED",
+    hook: "A roulette wheel is risky because outcomes and probabilities are known. A new market is uncertain because even the list of possible outcomes may be incomplete.",
+    definition: "Risk usually describes variability that can be measured or assigned probabilities, while uncertainty describes situations where probabilities—or even outcomes—are not reliably known. Frank Knight made this distinction influential in economics.",
+    mechanics: ["For risk, estimate probabilities, impacts, and expected values.", "For uncertainty, use scenarios, options, experiments, and resilience.", "Update decisions as evidence arrives instead of demanding false precision."],
+    example: "An insurer can model thousands of similar claims as risk. A company launching a technology under future regulation faces uncertainty and may pilot in stages rather than commit everything at once.",
+    why: "The distinction helps leaders choose appropriate tools. Quantitative models suit repeatable risk; learning and adaptability matter more under deep uncertainty.",
+    watch: "Numbers can disguise uncertainty as risk. Estimated probabilities are still assumptions, and rare consequences deserve attention even when data are limited.",
+    remember: "Risk can often be priced; uncertainty must also be explored and managed."
+  },
+  {
+    id: "ups-stp", term: "UPS to STP", full: "Universal Product Strategy to Segmentation, Targeting and Positioning", category: "Marketing", accent: "#E94E77",
+    hook: "A product designed vaguely for everyone may delight no one. Moving from a universal offer to STP means choosing whom to serve and why the offer should matter to them.",
+    definition: "UPS to STP describes the move from broad, mass-market product thinking toward Segmentation, Targeting, and Positioning. A market is divided into meaningful groups, selected groups are prioritised, and a distinct value proposition is built for them.",
+    mechanics: ["Segment customers by needs, behaviour, context, or other useful variables.", "Target attractive segments the company can serve well.", "Position the offer with a clear frame, benefit, and reason to believe."],
+    example: "A generic fitness app may target time-poor new parents, position itself around ten-minute home sessions, and tailor reminders, programmes, and testimonials to that situation.",
+    why: "STP improves relevance, product decisions, channel efficiency, messaging consistency, and the use of limited resources.",
+    watch: "Segments must be measurable, reachable, and meaningful. Over-segmentation increases complexity, while careless targeting can reinforce stereotypes or exclude unfairly.",
+    remember: "Choose the customer, then earn a clear place in that customer’s mind."
+  },
+  {
+    id: "maslow", term: "Maslow’s Hierarchy of Needs", full: "Maslow’s Hierarchy of Needs", category: "People", accent: "#A65AC7",
+    hook: "It is difficult to focus on personal growth when food, safety, or belonging feel threatened. Maslow organised human needs into a memorable hierarchy.",
+    definition: "Maslow’s theory describes needs commonly presented as five levels: physiological needs, safety, love and belonging, esteem, and self-actualisation. Lower unmet needs are proposed to demand attention before higher growth needs dominate.",
+    mechanics: ["Consider whether basic physical and security needs are met.", "Examine belonging, recognition, autonomy, and growth.", "Use the hierarchy as a prompt, not a rigid sequence."],
+    example: "A company offering inspirational career goals while employees face unsafe conditions and unpredictable pay is skipping foundational needs. Fixing safety and stability is likely more urgent than a motivational campaign.",
+    why: "The framework gives managers and marketers an accessible way to think about motivation beyond money and to design more humane environments.",
+    watch: "Research does not support a universal staircase followed in the same order by every culture and person. Multiple needs can operate at once.",
+    remember: "Higher aspiration is easier when fundamental needs are not under threat."
+  },
+  {
+    id: "mcgregor", term: "McGregor’s Theory X & Y", full: "McGregor’s Theory X and Theory Y", category: "People", accent: "#A65AC7",
+    hook: "Managers often create the workforce they expect. If they assume people avoid responsibility, they design control; if they expect growth, they design trust and participation.",
+    definition: "Douglas McGregor contrasted two sets of managerial assumptions. Theory X assumes people dislike work and need close direction. Theory Y assumes work can be natural and people can exercise self-direction and seek responsibility under supportive conditions.",
+    mechanics: ["Notice the assumptions built into policies, incentives, and supervision.", "Match structure to task, skill, risk, and context rather than ideology.", "Create clarity, resources, participation, and meaningful accountability."],
+    example: "A call centre that scripts every sentence and measures only handling time reflects Theory X assumptions. A team given customer outcomes, training, and discretion reflects more Theory Y thinking.",
+    why: "The framework shows how beliefs about people influence job design, leadership, culture, motivation, and learning.",
+    watch: "X and Y are not employee personality types, and Theory Y does not mean no standards or management. Different situations still require boundaries and coordination.",
+    remember: "Management assumptions shape systems, and systems shape behaviour."
+  },
+  {
+    id: "lean-canvas", term: "Lean Canvas", full: "Lean Canvas", category: "Innovation", accent: "#00A6A6",
+    hook: "An early startup has more unknowns than facts. Lean Canvas compresses the riskiest business assumptions onto one page so they can be tested quickly.",
+    definition: "Lean Canvas adapts the Business Model Canvas for startups. Its nine blocks cover customer segments, problems, unique value proposition, solution, channels, revenue streams, cost structure, key metrics, and unfair advantage.",
+    mechanics: ["Name a specific customer and their most important problems.", "Propose a value proposition and smallest credible solution.", "Identify the riskiest assumption, test it, and update the canvas."],
+    example: "A founder planning a tutor marketplace first tests whether parents struggle to find verified tutors and will book interviews. That evidence comes before building a full matching platform.",
+    why: "The canvas makes uncertainty visible, aligns a small team, and keeps attention on learning rather than lengthy planning based on guesses.",
+    watch: "Filling boxes is not validation. Customer interviews, prototypes, pricing tests, and behavioural evidence must change the canvas as the team learns.",
+    remember: "Write the assumptions down, test the riskiest one, and revise fast."
+  }
+];
+
+</script>
+  <script>
+    (() => {
+      const TERMS = window.TERMS || [];
+      const $ = (id) => document.getElementById(id);
+      const state = {
+        current: null,
+        queue: [],
+        seen: new Set(JSON.parse(localStorage.getItem('tmt-seen') || '[]')),
+        lastId: localStorage.getItem('tmt-last') || null,
+        speaking: false,
+        paused: false,
+        utterance: null,
+        wordSpans: [],
+        activeWord: -1,
+        activeSentence: -1,
+        speechTimer: null,
+        currentChar: 0,
+        lastBoundaryAt: 0,
+        speechCharRate: 0,
+        aiStarted: false,
+        aiBusy: false,
+        aiQuiz: null
+      };
+
+      const els = {
+        workspace: $('workspace'), category: $('category'), deckCount: $('deckCount'), monogram: $('monogram'), termArt: $('termArt'),
+        termTitle: $('termTitle'), termFull: $('termFull'), learnedNumber: $('learnedNumber'), readTime: $('readTime'),
+        wordCount: $('wordCount'), hook: $('hook'), definition: $('definition'), steps: $('steps'), example: $('example'),
+        why: $('why'), watch: $('watch'), remember: $('remember'), lessonContent: $('lessonContent'),
+        karaoke: $('karaoke'), karaokeText: $('karaokeText'), karaokeStatus: $('karaokeStatus'), karaokeProgress: $('karaokeProgress'),
+        playBtn: $('playBtn'), playIcon: $('playIcon'), playLabel: $('playLabel'), nextBtn: $('nextBtn'), quizBtn: $('quizBtn'),
+        quizDialog: $('quizDialog'), quizTerm: $('quizTerm'), quizOptions: $('quizOptions'), quizResult: $('quizResult'),
+        aiDialog: $('aiDialog'), aiMessages: $('aiMessages'), aiInput: $('aiInput'), aiForm: $('aiForm'),
+        libraryBtn: $('libraryBtn'), drawer: $('drawer'), drawerBackdrop: $('drawerBackdrop'), termList: $('termList'), search: $('search')
+      };
+
+      function shuffle(items) {
+        const a = [...items];
+        for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      }
+
+      function freshQueue(excludeId) {
+        const q = shuffle(TERMS.map(t => t.id));
+        if (q.length > 1 && q[0] === excludeId) [q[0], q[1]] = [q[1], q[0]];
+        return q;
+      }
+
+      function narration(t) {
+        const expanded = t.full !== t.term ? `, which stands for ${t.full}` : '';
+        return `Today’s term is ${t.term}${expanded}. ${t.hook} ${t.definition} Here is how it works. First, ${t.mechanics[0]} Next, ${t.mechanics[1]} Finally, ${t.mechanics[2]} Consider this example. ${t.example} Why does this matter? ${t.why} One caution: ${t.watch} If you remember one thing, remember this: ${t.remember}`;
+      }
+
+      function words(text) { return text.trim().split(/\s+/).filter(Boolean).length; }
+
+      function prepareKaraoke(t) {
+        const text = narration(t);
+        els.karaokeText.innerHTML = '';
+        state.wordSpans = [];
+        state.activeWord = -1;
+        state.activeSentence = -1;
+        state.currentChar = 0;
+        state.lastBoundaryAt = 0;
+        let sentence = 0;
+        const matches = text.matchAll(/\S+\s*/g);
+        for (const match of matches) {
+          const span = document.createElement('span');
+          span.className = 'word';
+          span.textContent = match[0];
+          span.dataset.start = match.index;
+          span.dataset.end = match.index + match[0].length;
+          span.dataset.sentence = sentence;
+          els.karaokeText.appendChild(span);
+          state.wordSpans.push(span);
+          if (/[.!?][”’"')\]]*$/.test(match[0].trim())) sentence++;
+        }
+        els.karaoke.classList.remove('show');
+        els.karaokeStatus.textContent = 'Ready';
+        els.karaokeProgress.style.width = '0%';
+        els.karaokeProgress.parentElement.setAttribute('aria-valuenow', '0');
+        els.karaokeText.scrollTop = 0;
+      }
+
+      function wordIndexAt(charIndex) {
+        let lo = 0, hi = state.wordSpans.length - 1;
+        while (lo <= hi) {
+          const mid = (lo + hi) >> 1;
+          const span = state.wordSpans[mid];
+          const start = Number(span.dataset.start), end = Number(span.dataset.end);
+          if (charIndex < start) hi = mid - 1;
+          else if (charIndex >= end) lo = mid + 1;
+          else return mid;
+        }
+        return Math.max(0, Math.min(state.wordSpans.length - 1, lo));
+      }
+
+      function updateKaraoke(charIndex) {
+        if (!state.wordSpans.length) return;
+        const textLength = Number(state.wordSpans.at(-1).dataset.end);
+        const safeChar = Math.max(0, Math.min(textLength - 1, charIndex || 0));
+        const nextIndex = wordIndexAt(safeChar);
+        const next = state.wordSpans[nextIndex];
+        const sentence = Number(next.dataset.sentence);
+
+        if (state.activeWord >= 0 && state.wordSpans[state.activeWord]) state.wordSpans[state.activeWord].classList.remove('active');
+        if (state.activeSentence !== sentence) {
+          state.wordSpans.forEach(span => span.classList.toggle('sentence-active', Number(span.dataset.sentence) === sentence));
+          state.activeSentence = sentence;
+        }
+        if (nextIndex >= state.activeWord) {
+          for (let i = Math.max(0, state.activeWord); i < nextIndex; i++) state.wordSpans[i].classList.add('spoken');
+        }
+        next.classList.add('active');
+        state.activeWord = nextIndex;
+        state.currentChar = safeChar;
+
+        const percent = Math.min(100, Math.round((safeChar / Math.max(1, textLength)) * 100));
+        els.karaokeProgress.style.width = `${percent}%`;
+        els.karaokeProgress.parentElement.setAttribute('aria-valuenow', String(percent));
+        const top = next.offsetTop;
+        if (top < els.karaokeText.scrollTop + 8 || top > els.karaokeText.scrollTop + els.karaokeText.clientHeight - 34) {
+          els.karaokeText.scrollTo({top: Math.max(0, top - els.karaokeText.clientHeight / 2), behavior: 'smooth'});
+        }
+      }
+
+      function clearSpeechTimer() {
+        if (state.speechTimer) clearInterval(state.speechTimer);
+        state.speechTimer = null;
+      }
+
+      function startSpeechProgress(text) {
+        clearSpeechTimer();
+        const durationMs = (words(text) / 105) * 60000;
+        state.speechCharRate = text.length / durationMs;
+        state.speechTimer = setInterval(() => {
+          if (!state.speaking || state.paused) return;
+          if (!state.lastBoundaryAt || Date.now() - state.lastBoundaryAt > 650) {
+            updateKaraoke(state.currentChar + state.speechCharRate * 180);
+          }
+        }, 180);
+      }
+
+      function finishKaraoke() {
+        clearSpeechTimer();
+        state.wordSpans.forEach(span => {
+          span.classList.remove('active', 'sentence-active');
+          span.classList.add('spoken');
+        });
+        els.karaokeProgress.style.width = '100%';
+        els.karaokeProgress.parentElement.setAttribute('aria-valuenow', '100');
+        els.karaokeStatus.textContent = 'Finished';
+      }
+
+      const TERM_ART = {
+        'capm': `<path class="thin" d="M35 124V31M35 124h193"/><path class="accent-stroke" d="m47 111 41-32 34 15 44-54 43 22"/><circle class="accent-fill" cx="166" cy="40" r="9"/><path class="ink" d="m204 50 5 12 13 2-10 9 3 13-11-7-12 7 4-13-10-9 13-2z"/>`,
+        'clt': `<path class="thin" d="M28 124h204"/><path class="accent-stroke" d="M31 122c37-1 48-5 67-38 12-21 19-50 32-50s20 29 32 50c19 33 30 37 67 38"/><g fill="var(--navy)"><circle cx="53" cy="72" r="4"/><circle cx="78" cy="46" r="4"/><circle cx="104" cy="63" r="4"/><circle cx="142" cy="52" r="4"/><circle cx="181" cy="65" r="4"/><circle cx="209" cy="43" r="4"/></g>`,
+        'gaap': `<path class="paper-fill" d="M62 27h113a16 16 0 0 1 16 16v88H78a16 16 0 0 1-16-16z"/><path class="ink" d="M78 27v104M95 52h61M95 72h61M95 92h37"/><circle class="accent-fill" cx="185" cy="104" r="29"/><path class="ink" d="m172 104 9 9 18-22"/>`,
+        'lean': `<path class="ink" d="M27 110h206M45 110V84h150v26M52 124h134"/><g class="paper-fill"><rect x="54" y="56" width="38" height="28" rx="3"/><rect x="108" y="56" width="38" height="28" rx="3"/><rect x="162" y="56" width="38" height="28" rx="3"/></g><path class="accent-stroke" d="M32 42h150l-13-12m13 12-13 12"/><g fill="var(--navy)"><circle cx="70" cy="110" r="7"/><circle cx="116" cy="110" r="7"/><circle cx="162" cy="110" r="7"/></g>`,
+        'anova': `<path class="thin" d="M29 125h204"/><g class="paper-fill"><rect x="43" y="66" width="22" height="59"/><rect x="73" y="45" width="22" height="80"/><rect x="112" y="78" width="22" height="47"/><rect x="142" y="58" width="22" height="67"/><rect x="181" y="35" width="22" height="90"/></g><path class="accent-stroke" d="M40 31h58M110 31h57M179 31h28"/>`,
+        'black-scholes': `<path class="thin" d="M31 123V29M31 123h198"/><path class="accent-stroke" d="M39 113c35-2 47-8 66-31 22-28 39-37 116-40"/><path class="ink" d="M151 30v95" stroke-dasharray="6 7"/><circle class="accent-fill" cx="151" cy="59" r="8"/><circle class="paper-fill" cx="205" cy="92" r="25"/><path class="ink" d="M205 78v15l10 6"/>`,
+        'ebitda': `<rect class="paper-fill" x="51" y="26" width="101" height="106" rx="12"/><rect class="accent-fill" x="66" y="41" width="71" height="23" rx="4"/><g fill="var(--navy)"><circle cx="76" cy="82" r="6"/><circle cx="101" cy="82" r="6"/><circle cx="126" cy="82" r="6"/><circle cx="76" cy="108" r="6"/><circle cx="101" cy="108" r="6"/></g><g class="accent-fill"><ellipse cx="188" cy="111" rx="29" ry="10"/><path d="M159 91v20c0 6 13 10 29 10s29-4 29-10V91"/><ellipse cx="188" cy="91" rx="29" ry="10"/></g>`,
+        'six-sigma': `<circle class="paper-fill" cx="130" cy="79" r="57"/><circle class="ink" cx="130" cy="79" r="37"/><circle class="accent-fill" cx="130" cy="79" r="15"/><path class="accent-stroke" d="m130 79 70-48m-1 0-19 2m19-2-6 18"/><g fill="var(--navy)"><circle cx="79" cy="47" r="4"/><circle cx="78" cy="108" r="4"/><circle cx="181" cy="47" r="4"/><circle cx="182" cy="108" r="4"/><circle cx="130" cy="17" r="4"/><circle cx="130" cy="141" r="4"/></g>`,
+        'pestle': `<circle class="paper-fill" cx="130" cy="78" r="51"/><path class="thin" d="M79 78h102M130 27c-17 16-24 33-24 51s7 35 24 51M130 27c17 16 24 33 24 51s-7 35-24 51M86 52h88M86 104h88"/><g class="accent-fill"><circle cx="51" cy="44" r="11"/><circle cx="210" cy="42" r="11"/><circle cx="217" cy="111" r="11"/><circle cx="46" cy="113" r="11"/></g>`,
+        'pert': `<g class="paper-fill"><circle cx="39" cy="78" r="15"/><circle cx="99" cy="40" r="15"/><circle cx="99" cy="115" r="15"/><circle cx="165" cy="57" r="15"/><circle cx="165" cy="115" r="15"/><circle cx="224" cy="78" r="15"/></g><path class="ink" d="m54 71 30-21M54 85l30 21M114 44l36 9M114 112h36M180 61l29 12M180 108l29-21"/><circle class="accent-fill" cx="165" cy="57" r="15"/>`,
+        'cpm': `<g class="paper-fill"><circle cx="33" cy="112" r="13"/><circle cx="78" cy="68" r="13"/><circle cx="128" cy="100" r="13"/><circle cx="175" cy="47" r="13"/><circle cx="225" cy="80" r="13"/></g><path class="thin" d="m42 102 27-25m20-1 28 18m20-4 29-33m20-2 28 18"/><path class="accent-stroke" d="m33 112 45-44 50 32 47-53 50 33"/><circle class="accent-fill" cx="128" cy="100" r="13"/>`,
+        'dcf': `<g class="paper-fill"><circle cx="52" cy="79" r="25"/><circle cx="203" cy="79" r="25"/></g><path class="ink" d="M52 65v28M44 70h13c11 0 10 11 0 11H45l15 12M203 65v28M195 70h13c11 0 10 11 0 11h-12l15 12"/><path class="accent-stroke" d="M173 79H84m14-14L82 79l16 14"/><path class="thin" d="M128 43v72" stroke-dasharray="5 7"/>`,
+        'abc': `<g class="paper-fill"><rect x="29" y="31" width="61" height="36" rx="7"/><rect x="29" y="91" width="61" height="36" rx="7"/><rect x="170" y="60" width="61" height="36" rx="7"/></g><path class="ink" d="M90 49h38v29h42M90 109h38V78"/><circle class="accent-fill" cx="129" cy="78" r="20"/><path class="ink" d="M129 67v22M122 71h11c8 0 7 8 0 8h-10l12 10"/>`,
+        'aida': `<path class="paper-fill" d="M38 28h184l-30 30H68zM68 58h124l-28 30H96zM96 88h68l-23 39h-22z"/><path class="accent-stroke" d="M46 42h82M82 73h69M112 104h35"/><circle class="accent-fill" cx="130" cy="132" r="10"/>`,
+        'consumer-persona': `<circle class="accent-fill" cx="88" cy="63" r="30"/><path class="paper-fill" d="M34 132c5-30 24-47 54-47s49 17 54 47"/><rect class="paper-fill" x="153" y="34" width="75" height="98" rx="12"/><path class="ink" d="M170 58h41M170 77h31M170 103h41"/><circle fill="var(--accent)" cx="166" cy="58" r="4"/><circle fill="var(--accent)" cx="166" cy="77" r="4"/><circle fill="var(--accent)" cx="166" cy="103" r="4"/>`,
+        'bcg': `<rect class="paper-fill" x="43" y="25" width="174" height="108" rx="5"/><path class="ink" d="M130 25v108M43 79h174"/><g class="accent-fill"><circle cx="87" cy="51" r="17"/><circle cx="171" cy="55" r="11"/><circle cx="89" cy="106" r="10"/><circle cx="178" cy="106" r="20"/></g>`,
+        'porters-five': `<circle class="accent-fill" cx="130" cy="79" r="29"/><g class="paper-fill"><circle cx="130" cy="24" r="15"/><circle cx="215" cy="62" r="15"/><circle cx="183" cy="132" r="15"/><circle cx="76" cy="132" r="15"/><circle cx="45" cy="62" r="15"/></g><path class="ink" d="M130 39v11M200 67l-42 8M174 120l-28-23M86 120l28-23M60 67l42 8"/>`,
+        'cac': `<path class="paper-fill" d="m37 66 62-27v78L37 90z"/><path class="ink" d="M99 61c20 8 20 34 0 42M50 93l9 32h23l-13-25"/><circle class="accent-fill" cx="189" cy="62" r="22"/><path class="ink" d="M155 124c3-25 16-39 34-39s31 14 34 39"/><path class="accent-stroke" d="M129 78h29m-10-10 10 10-10 10"/>`,
+        'ltv': `<circle class="accent-fill" cx="51" cy="54" r="20"/><path class="paper-fill" d="M24 109c3-22 13-35 27-35s24 13 27 35"/><path class="ink" d="M89 79h132"/><g class="accent-fill"><circle cx="109" cy="79" r="12"/><circle cx="151" cy="79" r="12"/><circle cx="193" cy="79" r="12"/></g><path class="ink" d="M109 68V48M151 68V35M193 68V23"/><path class="accent-stroke" d="m92 126 38-13 30 5 61-28"/>`,
+        'esg': `<path class="accent-fill" d="M54 113c2-48 29-76 78-80-1 50-27 78-78 80z"/><path class="ink" d="M61 105c24-13 40-31 55-58"/><circle class="paper-fill" cx="173" cy="53" r="23"/><path class="paper-fill" d="M132 119c4-28 19-44 41-44s37 16 41 44"/><path class="ink" d="m183 96 13-10 13 10v19h-26z"/>`,
+        'arr': `<circle class="paper-fill" cx="130" cy="80" r="55"/><path class="accent-stroke" d="M94 39a54 54 0 0 1 81 11m-1-18 2 19-19-2M166 121a54 54 0 0 1-81-11m1 18-2-19 19 2"/><path class="ink" d="M130 50v61M115 62h26c20 0 19 20 0 20h-24l29 29"/>`,
+        'toc': `<path class="paper-fill" d="M31 35h72v31l25 16-25 15v31H31zM229 35h-72v31l-25 16 25 15v31h72z"/><path class="accent-stroke" d="M24 82h83m46 0h83"/><circle class="accent-fill" cx="130" cy="82" r="14"/>`,
+        'blue-ocean': `<path class="accent-stroke" d="M19 115c24-18 45 18 69 0s45 18 69 0 45 18 80 0"/><path class="paper-fill" d="M90 96h85l-18 20h-49z"/><path class="ink" d="M132 28v68M133 32l44 46h-44z"/><circle fill="var(--accent)" cx="49" cy="42" r="13"/><path class="thin" d="M30 68c20-18 39-18 58 0"/>`,
+        'monte-carlo': `<g class="paper-fill"><rect x="38" y="44" width="63" height="63" rx="9" transform="rotate(-9 70 75)"/><rect x="147" y="45" width="63" height="63" rx="9" transform="rotate(9 178 76)"/></g><g fill="var(--accent)"><circle cx="57" cy="61" r="6"/><circle cx="82" cy="87" r="6"/><circle cx="58" cy="91" r="6"/><circle cx="166" cy="63" r="6"/><circle cx="190" cy="65" r="6"/><circle cx="178" cy="84" r="6"/><circle cx="164" cy="99" r="6"/><circle cx="191" cy="99" r="6"/></g><path class="accent-stroke" d="m35 126 39-8 34 8 38-13 40 7 38-18"/>`,
+        'time-series': `<path class="thin" d="M27 125V27M27 125h207"/><path class="accent-stroke" d="m36 105 22-20 20 10 25-44 22 20 22-8 25 26 22-55 31 13"/><path class="ink" d="M45 125v-9M85 125v-9M125 125v-9M165 125v-9M205 125v-9"/>`,
+        'wacc': `<path class="ink" d="M130 31v94M76 125h108M94 48h72"/><path class="thin" d="m94 48-37 52m37-52 37 52m35-52-37 52m37-52 37 52"/><path class="paper-fill" d="M34 100h46c-3 19-43 19-46 0zM106 100h50c-3 20-47 20-50 0zM180 100h46c-3 19-43 19-46 0z"/><circle class="accent-fill" cx="130" cy="31" r="10"/>`,
+        'mece': `<g class="paper-fill"><path d="M35 38h76v39H89c0-12-18-12-18 0H35z"/><path d="M149 38h76v39h-36c0 12-18 12-18 0h-22z"/><path d="M35 98h36c0-12 18-12 18 0h22v34H35z"/><path d="M149 98h22c0 12 18 12 18 0h36v34h-76z"/></g><path class="accent-stroke" d="M130 28v112"/>`,
+        'cct': `<circle class="accent-fill" cx="130" cy="79" r="28"/><g class="paper-fill"><circle cx="72" cy="56" r="24"/><circle cx="188" cy="56" r="24"/><circle cx="86" cy="118" r="24"/><circle cx="174" cy="118" r="24"/></g><path class="ink" d="M93 65l14 5M167 65l-14 5M104 106l12-10M156 106l-12-10"/><path class="ink" d="m130 63 6 10 12 2-9 9 2 12-11-6-11 6 2-12-9-9 12-2z"/>`,
+        'bmc': `<rect class="paper-fill" x="29" y="26" width="202" height="106" rx="7"/><path class="ink" d="M70 26v106M110 26v106M151 26v106M191 26v106M29 80h202"/><rect fill="var(--accent)" x="76" y="35" width="28" height="35" rx="4"/><rect fill="var(--accent)" x="157" y="87" width="28" height="35" rx="4"/>`,
+        'okr': `<circle class="paper-fill" cx="132" cy="79" r="53"/><circle class="ink" cx="132" cy="79" r="34"/><circle class="accent-fill" cx="132" cy="79" r="14"/><path class="accent-stroke" d="m132 79 71-50m-1 0-19 3m19-3-5 19"/><path class="ink" d="m41 100 10 10 20-26"/>`,
+        'pest': `<circle class="paper-fill" cx="130" cy="79" r="57"/><path class="ink" d="M130 22v114M73 79h114"/><path class="accent-fill" d="m130 35 14 30-14 14-14-14z"/><path class="accent-fill" d="m130 123-14-30 14-14 14 14z"/><circle fill="var(--navy)" cx="130" cy="79" r="6"/>`,
+        'eva': `<path class="thin" d="M30 124h202M52 124V82M90 124V64M128 124V92M166 124V45M204 124V28"/><path class="accent-stroke" d="M33 72h196" stroke-dasharray="9 7"/><path class="ink" d="m178 31 26-15 25 15"/><circle class="accent-fill" cx="204" cy="28" r="9"/>`,
+        'breakeven': `<path class="thin" d="M29 124V29M29 124h203"/><path class="ink" d="M39 112 215 39"/><path class="accent-stroke" d="M39 45l176 67"/><circle class="accent-fill" cx="127" cy="76" r="11"/><path class="thin" d="M127 76v48M29 76h98" stroke-dasharray="5 6"/>`,
+        'digital-twin': `<path class="paper-fill" d="m31 57 48-25 48 25-48 26zM31 57v51l48 25V83M127 57v51l-48 25"/><path class="accent-fill" d="m133 57 48-25 48 25-48 26zM133 57v51l48 25V83M229 57v51l-48 25"/><path class="accent-stroke" d="M112 79h36" stroke-dasharray="5 6"/>`,
+        'big-data': `<g class="paper-fill"><ellipse cx="130" cy="37" rx="66" ry="19"/><path d="M64 37v27c0 11 30 19 66 19s66-8 66-19V37M64 64v27c0 11 30 19 66 19s66-8 66-19V64M64 91v27c0 11 30 19 66 19s66-8 66-19V91"/></g><g fill="var(--accent)"><circle cx="35" cy="51" r="6"/><circle cx="222" cy="44" r="8"/><circle cx="223" cy="112" r="5"/><circle cx="39" cy="104" r="9"/></g>`,
+        'big-five': `<g class="accent-fill"><ellipse cx="130" cy="43" rx="24" ry="34"/><ellipse cx="173" cy="70" rx="24" ry="34" transform="rotate(72 173 70)"/><ellipse cx="156" cy="119" rx="24" ry="34" transform="rotate(144 156 119)"/><ellipse cx="104" cy="119" rx="24" ry="34" transform="rotate(216 104 119)"/><ellipse cx="87" cy="70" rx="24" ry="34" transform="rotate(288 87 70)"/></g><circle class="paper-fill" cx="130" cy="82" r="24"/><circle fill="var(--navy)" cx="130" cy="82" r="7"/>`,
+        'mbti': `<rect class="paper-fill" x="53" y="25" width="154" height="108" rx="18"/><path class="ink" d="M130 25v108M53 79h154"/><path class="accent-stroke" d="M76 53h31M153 52h30M75 105h32M153 105h30"/><circle fill="var(--navy)" cx="96" cy="49" r="4"/><circle fill="var(--navy)" cx="164" cy="49" r="4"/><path class="thin" d="M108 64c12 9 32 9 44 0"/>`,
+        'mars': `<circle class="accent-fill" cx="130" cy="79" r="24"/><ellipse class="ink" cx="130" cy="79" rx="90" ry="39"/><ellipse class="ink" cx="130" cy="79" rx="39" ry="67" transform="rotate(38 130 79)"/><g class="paper-fill"><circle cx="42" cy="79" r="10"/><circle cx="218" cy="79" r="10"/><circle cx="104" cy="18" r="10"/><circle cx="162" cy="138" r="10"/></g>`,
+        'balanced-scorecard': `<rect class="paper-fill" x="36" y="28" width="188" height="103" rx="13"/><path class="ink" d="M130 28v103M36 80h188"/><path class="accent-stroke" d="M55 64l15-15 16 8 19-20M150 60h52M153 109l15-11 14 6 22-18"/><circle class="accent-fill" cx="188" cy="49" r="11"/>`,
+        'ansoff': `<rect class="paper-fill" x="50" y="25" width="160" height="110" rx="5"/><path class="ink" d="M130 25v110M50 80h160"/><path class="accent-stroke" d="M88 65V43m0 0-9 10m9-10 9 10M171 94v22m0 0-9-10m9 10 9-10"/><circle fill="var(--accent)" cx="171" cy="54" r="14"/>`,
+        'product-life-cycle': `<path class="thin" d="M29 124V29M29 124h203"/><path class="accent-stroke" d="M38 116c27-3 35-33 56-56 27-30 69-31 99-12 14 9 20 31 30 58"/><g fill="var(--navy)"><circle cx="51" cy="105" r="5"/><circle cx="100" cy="54" r="5"/><circle cx="164" cy="42" r="5"/><circle cx="213" cy="88" r="5"/></g>`,
+        'diffusion': `<path class="thin" d="M25 124h210"/><path class="accent-stroke" d="M29 122c35-1 53-12 72-50 10-20 19-39 31-39 13 0 22 23 34 43 18 30 35 44 65 46"/><g class="paper-fill"><circle cx="55" cy="109" r="9"/><circle cx="92" cy="83" r="9"/><circle cx="130" cy="55" r="9"/><circle cx="169" cy="80" r="9"/><circle cx="207" cy="109" r="9"/></g>`,
+        'probability-distribution': `<path class="thin" d="M30 124h202"/><path class="accent-stroke" d="M35 122c31 0 44-8 59-42 12-28 23-47 38-47 16 0 28 23 41 51 14 30 27 38 54 38"/><g fill="var(--navy)"><circle cx="56" cy="104" r="5"/><circle cx="85" cy="78" r="5"/><circle cx="111" cy="47" r="5"/><circle cx="137" cy="48" r="5"/><circle cx="168" cy="83" r="5"/><circle cx="202" cy="111" r="5"/></g>`,
+        'kaizen': `<path class="paper-fill" d="M42 126V105h39V84h39V63h39V42h39V21h25v105z"/><path class="accent-stroke" d="m48 111 44-29 32-23 37-22 48-21m-1 0-18 2m18-2-6 17"/><circle class="accent-fill" cx="49" cy="112" r="9"/>`,
+        'irr': `<circle class="paper-fill" cx="130" cy="79" r="54"/><path class="accent-stroke" d="M93 38a54 54 0 0 1 80 5m-1-18 2 19-19-3M168 119a54 54 0 0 1-79-5m1 18-2-19 19 3"/><circle class="accent-fill" cx="111" cy="64" r="10"/><circle class="accent-fill" cx="151" cy="96" r="10"/><path class="ink" d="m105 103 51-49"/>`,
+        'risk-uncertainty': `<path class="paper-fill" d="M39 77c8-39 39-61 81-61s73 22 81 61c-13-9-27-9-40 0-13-9-27-9-41 0-13-9-27-9-40 0-13-9-27-9-41 0z"/><path class="ink" d="M120 77v39c0 21 25 21 25 2"/><path class="accent-stroke" d="M50 117c21-19 36 20 56-3s38 18 59-5 32 3 46-17" stroke-dasharray="7 7"/>`,
+        'ups-stp': `<path class="paper-fill" d="M28 27h204l-48 47h-28v25l-52 28V74H76z"/><path class="accent-stroke" d="M47 48h64M125 48h44M183 48h29"/><circle class="accent-fill" cx="182" cy="108" r="27"/><circle class="ink" cx="182" cy="108" r="14"/><circle fill="var(--navy)" cx="182" cy="108" r="5"/>`,
+        'maslow': `<path class="paper-fill" d="m130 19 94 113H36z"/><path class="ink" d="M61 102h138M83 75h94M105 48h50"/><path fill="var(--accent)" stroke="var(--navy)" stroke-width="3" d="m130 19 25 29h-50z"/>`,
+        'mcgregor': `<circle class="paper-fill" cx="75" cy="52" r="24"/><circle class="accent-fill" cx="185" cy="52" r="24"/><path class="ink" d="M38 126c4-32 17-50 37-50s33 18 37 50M148 126c4-32 17-50 37-50s33 18 37 50M64 47h22m-22 12 22-20M174 51l8 8 15-19"/>`,
+        'lean-canvas': `<rect class="paper-fill" x="31" y="24" width="198" height="110" rx="8"/><path class="ink" d="M80 24v110M130 24v110M180 24v110M31 79h198"/><g fill="var(--accent)" stroke="var(--navy)" stroke-width="2"><rect x="40" y="36" width="31" height="30" rx="3"/><rect x="90" y="91" width="31" height="29" rx="3"/><rect x="140" y="37" width="31" height="29" rx="3"/><rect x="190" y="92" width="30" height="28" rx="3"/></g>`
+      };
+
+      function illustrationFor(t) {
+        const fallback = `<circle class="paper-fill" cx="130" cy="78" r="52"/><path class="accent-stroke" d="M91 95c17-38 48-52 81-35"/><circle class="accent-fill" cx="91" cy="95" r="10"/><circle class="accent-fill" cx="172" cy="60" r="10"/>`;
+        return `<svg viewBox="0 0 260 155" focusable="false"><path d="M20 18h42M198 137h42" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" opacity=".32"/>${TERM_ART[t.id] || fallback}</svg>`;
+      }
+
+      function initials(term) {
+        const clean = term.replace(/[^A-Za-z0-9& ]/g, '').split(/\s+/).filter(Boolean);
+        if (clean.length === 1) return clean[0].slice(0, 4).toUpperCase();
+        return clean.slice(0, 4).map(x => x[0]).join('').toUpperCase();
+      }
+
+      function markSeen(t) {
+        state.seen.add(t.id);
+        localStorage.setItem('tmt-seen', JSON.stringify([...state.seen]));
+        els.learnedNumber.textContent = `${state.seen.size} / ${TERMS.length}`;
+      }
+
+      function render(t, animate = true) {
+        stopSpeech();
+        state.current = t;
+        state.lastId = t.id;
+        localStorage.setItem('tmt-last', t.id);
+        markSeen(t);
+        document.documentElement.style.setProperty('--accent', t.accent);
+        els.category.textContent = t.category;
+        els.deckCount.textContent = `${Math.max(state.queue.length, 0)} unseen in this shuffle`;
+        els.monogram.textContent = initials(t.term);
+        els.termArt.innerHTML = illustrationFor(t);
+        els.termTitle.textContent = t.term;
+        els.termFull.textContent = t.full;
+        els.hook.textContent = t.hook;
+        els.definition.textContent = t.definition;
+        els.steps.innerHTML = t.mechanics.map(x => `<li>${x}</li>`).join('');
+        els.example.textContent = t.example;
+        els.why.textContent = t.why;
+        els.watch.textContent = t.watch;
+        els.remember.textContent = t.remember;
+        const wc = words(narration(t));
+        const seconds = Math.round(wc / 105 * 60);
+        els.wordCount.textContent = `${wc} spoken words`;
+        els.readTime.textContent = `≈ ${Math.max(1, Math.round(seconds / 60))} min explainer`;
+        prepareKaraoke(t);
+        setMobilePanel('overview');
+        renderLibrary(els.search.value);
+        if (animate) {
+          els.workspace.classList.remove('swap-in');
+          void els.workspace.offsetWidth;
+          els.workspace.classList.add('swap-in');
+        }
+        document.title = `${t.term} · Two Minute Terms`;
+      }
+
+      function nextRandom() {
+        if (!TERMS.length) return;
+        if (!state.queue.length) state.queue = freshQueue(state.lastId);
+        let id = state.queue.shift();
+        if (id === state.lastId && state.queue.length) {
+          state.queue.push(id);
+          id = state.queue.shift();
+        }
+        const next = TERMS.find(t => t.id === id) || TERMS[0];
+        render(next);
+        burst();
+        if (window.scrollY > els.workspace.offsetTop + 100) els.workspace.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+
+      function burst() {
+        const rect = els.nextBtn.getBoundingClientRect();
+        const colors = [state.current.accent, '#ffffff', '#29b6a6', '#f3b61f', '#7b61ff'];
+        for (let i = 0; i < 15; i++) {
+          const p = document.createElement('i');
+          p.className = 'confetti';
+          p.style.left = `${rect.left + rect.width/2}px`;
+          p.style.top = `${rect.top + rect.height/2}px`;
+          p.style.background = colors[i % colors.length];
+          p.style.setProperty('--dx', `${(Math.random()-.5)*190}px`);
+          p.style.setProperty('--dy', `${-30-Math.random()*120}px`);
+          p.style.setProperty('--rot', `${Math.random()*520-260}deg`);
+          document.body.appendChild(p);
+          setTimeout(() => p.remove(), 900);
+        }
+      }
+
+      function setPlayState(mode) {
+        state.speaking = mode === 'speaking';
+        state.paused = mode === 'paused';
+        document.body.classList.toggle('is-speaking', state.speaking && !state.paused);
+        if (mode === 'speaking') {
+          els.karaoke.classList.add('show');
+          els.karaokeStatus.textContent = 'Speaking now';
+          els.playLabel.textContent = 'Pause explainer';
+          els.playIcon.innerHTML = '<path d="M7 5h4v14H7zM13 5h4v14h-4z"/>';
+        } else if (mode === 'paused') {
+          els.karaoke.classList.add('show');
+          els.karaokeStatus.textContent = 'Paused';
+          els.playLabel.textContent = 'Resume explainer';
+          els.playIcon.innerHTML = '<path d="m8 5 11 7-11 7V5Z"/>';
+        } else {
+          els.playLabel.textContent = 'Listen to explainer';
+          els.playIcon.innerHTML = '<path d="m8 5 11 7-11 7V5Z"/>';
+        }
+      }
+
+      function stopSpeech() {
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+        clearSpeechTimer();
+        state.utterance = null;
+        setPlayState('idle');
+      }
+
+      function toggleSpeech() {
+        if (!('speechSynthesis' in window)) {
+          els.playLabel.textContent = 'Narration unavailable';
+          return;
+        }
+        if (state.speaking && !state.paused) {
+          window.speechSynthesis.pause();
+          setPlayState('paused');
+          return;
+        }
+        if (state.paused) {
+          window.speechSynthesis.resume();
+          setPlayState('speaking');
+          return;
+        }
+        prepareKaraoke(state.current);
+        const speechText = narration(state.current);
+        const u = new SpeechSynthesisUtterance(speechText);
+        u.rate = .82;
+        u.pitch = 1;
+        const voices = window.speechSynthesis.getVoices();
+        u.voice = voices.find(v => /^en-(IN|GB)/.test(v.lang) && /female|samantha|veena|rishi/i.test(v.name)) ||
+                  voices.find(v => /^en-(IN|GB)/.test(v.lang)) || voices.find(v => /^en/.test(v.lang)) || null;
+        u.onstart = () => {
+          setPlayState('speaking');
+          updateKaraoke(0);
+          startSpeechProgress(speechText);
+          requestAnimationFrame(() => els.karaoke.scrollIntoView({behavior: 'smooth', block: 'center'}));
+        };
+        u.onboundary = (event) => {
+          if (typeof event.charIndex !== 'number') return;
+          state.lastBoundaryAt = Date.now();
+          updateKaraoke(event.charIndex);
+        };
+        u.onend = () => {
+          finishKaraoke();
+          setPlayState('idle');
+        };
+        u.onerror = () => {
+          clearSpeechTimer();
+          els.karaokeStatus.textContent = 'Narration stopped';
+          setPlayState('idle');
+        };
+        state.utterance = u;
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(u);
+      }
+
+      function openQuiz() {
+        const others = shuffle(TERMS.filter(t => t.id !== state.current.id)).slice(0,2);
+        const choices = shuffle([{text: state.current.definition, correct: true}, ...others.map(t => ({text: t.definition, correct:false}))]);
+        els.quizTerm.textContent = state.current.term;
+        els.quizResult.className = 'quiz-result';
+        els.quizResult.textContent = '';
+        els.quizOptions.innerHTML = '';
+        choices.forEach(choice => {
+          const b = document.createElement('button');
+          b.className = 'quiz-option';
+          b.textContent = choice.text;
+          b.dataset.correct = choice.correct;
+          b.addEventListener('click', () => {
+            [...els.quizOptions.children].forEach(opt => {
+              opt.disabled = true;
+              if (opt.dataset.correct === 'true') opt.classList.add('correct');
+            });
+            if (choice.correct) {
+              b.classList.add('correct');
+              els.quizResult.innerHTML = `<strong>Exactly.</strong> ${state.current.remember}`;
+              burst();
+            } else {
+              b.classList.add('wrong');
+              els.quizResult.innerHTML = `<strong>Not quite.</strong> Look for the answer highlighted in green. ${state.current.remember}`;
+            }
+            els.quizResult.classList.add('show');
+          });
+          els.quizOptions.appendChild(b);
+        });
+        els.quizDialog.showModal();
+      }
+
+      const AI_STOP_WORDS = new Set('a an and are as at be by can could do does explain for from give how i in is it me of on or should simple tell that the their them these this to use want what when where which who why with would you your about anything related term terms business please'.split(' '));
+      const AI_ALIASES = {
+        'black-scholes': ['black scholes', 'option pricing'],
+        'breakeven': ['break even', 'break-even', 'break even analysis'],
+        'big-five': ['big five', 'five factor model', 'ocean personality'],
+        'porters-five': ['porter five forces', 'five forces'],
+        'consumer-persona': ['persona', 'buyer persona', 'customer persona'],
+        'lean': ['lean'],
+        'ansoff': ['ansoff'],
+        'product-life-cycle': ['plc', 'product lifecycle'],
+        'ups-stp': ['stp', 'segmentation targeting positioning'],
+        'balanced-scorecard': ['balanced scorecard', 'scorecard'],
+        'maslow': ['maslow'],
+        'mcgregor': ['mcgregor', 'theory x', 'theory y', 'theory x and y'],
+        'risk-uncertainty': ['risk versus uncertainty', 'risk vs uncertainty'],
+        'blue-ocean': ['blue ocean'],
+        'diffusion': ['innovation adoption'],
+        'mars': ['motivation ability role perceptions situational factors']
+      };
+      const AI_TOPICS = [
+        { words: ['value', 'valuation', 'investment', 'investor', 'returns', 'capital'], ids: ['dcf', 'wacc', 'capm', 'irr', 'eva', 'ebitda'] },
+        { words: ['marketing', 'customer', 'advertising', 'campaign', 'brand', 'sales'], ids: ['aida', 'consumer-persona', 'ups-stp', 'cac', 'ltv', 'product-life-cycle'] },
+        { words: ['startup', 'founder', 'business model', 'new venture'], ids: ['lean-canvas', 'bmc', 'consumer-persona', 'cac', 'ltv', 'blue-ocean'] },
+        { words: ['strategy', 'competition', 'market entry', 'industry'], ids: ['porters-five', 'pestle', 'bcg', 'ansoff', 'blue-ocean', 'cct'] },
+        { words: ['quality', 'process', 'efficiency', 'waste', 'operations', 'factory'], ids: ['lean', 'six-sigma', 'kaizen', 'toc', 'abc', 'digital-twin'] },
+        { words: ['project', 'schedule', 'deadline', 'tasks', 'timeline'], ids: ['pert', 'cpm', 'toc', 'monte-carlo'] },
+        { words: ['data', 'statistics', 'forecast', 'experiment', 'uncertainty', 'analytics'], ids: ['clt', 'anova', 'probability-distribution', 'monte-carlo', 'time-series', 'big-data'] },
+        { words: ['people', 'team', 'employee', 'motivation', 'personality', 'leadership'], ids: ['mars', 'maslow', 'mcgregor', 'big-five', 'mbti', 'okr'] },
+        { words: ['goals', 'performance', 'measure', 'kpi', 'objectives'], ids: ['okr', 'balanced-scorecard', 'eva', 'six-sigma'] },
+        { words: ['subscription', 'saas', 'recurring revenue', 'retention'], ids: ['arr', 'ltv', 'cac', 'consumer-persona'] }
+      ];
+
+      function aiNormalize(text) {
+        return text.toLowerCase().normalize('NFKD').replace(/[’']/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
+      }
+
+      function aiAliasesFor(term) {
+        const firstToken = term.term.trim().split(/\s+/)[0].replace(/[^A-Za-z0-9]/g, '');
+        const acronym = /^[A-Z0-9]{2,8}$/.test(firstToken) ? [firstToken] : [];
+        return [...new Set([term.term, term.full, ...acronym, ...(AI_ALIASES[term.id] || [])].map(aiNormalize).filter(Boolean))];
+      }
+
+      function aiMentionedTerms(question) {
+        const q = ` ${aiNormalize(question)} `;
+        return TERMS.filter(term => aiAliasesFor(term).some(alias => q.includes(` ${alias} `)));
+      }
+
+      function aiRankTerms(question) {
+        const normalized = aiNormalize(question);
+        const tokens = [...new Set(normalized.split(' ').filter(token => token.length > 2 && !AI_STOP_WORDS.has(token)))];
+        const mentioned = new Set(aiMentionedTerms(question).map(term => term.id));
+        return TERMS.map(term => {
+          const title = aiNormalize(`${term.term} ${term.full} ${(AI_ALIASES[term.id] || []).join(' ')}`);
+          const body = aiNormalize(`${term.category} ${term.definition} ${term.mechanics.join(' ')} ${term.example} ${term.why} ${term.watch} ${term.remember}`);
+          let score = mentioned.has(term.id) ? 100 : 0;
+          tokens.forEach(token => {
+            if (` ${title} `.includes(` ${token} `)) score += 8;
+            if (` ${aiNormalize(term.category)} `.includes(` ${token} `)) score += 5;
+            if (` ${body} `.includes(` ${token} `)) score += 1;
+          });
+          return { term, score };
+        }).sort((a, b) => b.score - a.score);
+      }
+
+      function aiTopicTerms(question) {
+        const q = aiNormalize(question);
+        const topic = AI_TOPICS.map(item => ({item, score: item.words.reduce((sum, word) => sum + (q.includes(aiNormalize(word)) ? 1 : 0), 0)}))
+          .sort((a, b) => b.score - a.score)[0];
+        if (!topic || !topic.score) return [];
+        return topic.item.ids.map(id => TERMS.find(term => term.id === id)).filter(Boolean);
+      }
+
+      function aiCategory(question) {
+        const q = aiNormalize(question);
+        return [...new Set(TERMS.map(term => term.category))].find(category => q.includes(aiNormalize(category))) || null;
+      }
+
+      function aiAnswer(question) {
+        const normalized = aiNormalize(question);
+        const mentioned = aiMentionedTerms(question);
+        const category = aiCategory(question);
+
+        if (/^(hi|hello|hey|help)$/.test(normalized)) {
+          return { text: `Hello! Ask me to explain a term, compare two ideas, suggest the right framework for a situation, give an example, or quiz you.`, ids: [state.current.id] };
+        }
+
+        if (state.aiQuiz && normalized.split(' ').length <= 9 && !/^(what|why|how|which|compare|explain|give|show)/.test(normalized)) {
+          const answer = state.aiQuiz;
+          const correct = aiAliasesFor(answer).some(alias => ` ${normalized} `.includes(` ${alias} `));
+          state.aiQuiz = null;
+          return correct
+            ? { text: `Correct — it’s ${answer.term}. ${answer.remember}\n\nWant another? Just say “quiz me.”`, ids: [answer.id] }
+            : { text: `Good try. The answer is ${answer.term} (${answer.full}). ${answer.remember}`, ids: [answer.id] };
+        }
+
+        if (/quiz|test me|question me/.test(normalized)) {
+          let pool = category ? TERMS.filter(term => term.category === category) : TERMS;
+          if (/marketing/.test(normalized)) pool = TERMS.filter(term => term.category === 'Marketing' || term.category === 'Growth');
+          const answer = pool[Math.floor(Math.random() * pool.length)] || state.current;
+          state.aiQuiz = answer;
+          return { text: `Quiz time. Which business term matches this description?\n\n${answer.definition}\n\nReply with the term or acronym.`, ids: [] };
+        }
+
+        if (/list|show|available|library|categories/.test(normalized) && !mentioned.length) {
+          if (category) {
+            const matches = TERMS.filter(term => term.category === category);
+            return { text: `${category} terms in the library:\n\n${matches.map(term => `• ${term.term} — ${term.full}`).join('\n')}`, ids: matches.slice(0, 6).map(term => term.id) };
+          }
+          const categories = [...new Set(TERMS.map(term => term.category))];
+          return { text: `You can explore: ${categories.join(', ')}.\n\nAsk for a category, such as “show me the Finance terms,” or describe a problem and I’ll suggest useful concepts.`, ids: [] };
+        }
+
+        const wantsComparison = /compare|difference| versus | vs |between/.test(` ${normalized} `);
+        if (wantsComparison && mentioned.length >= 2) {
+          const [first, second] = mentioned;
+          return {
+            text: `${first.term}\n${first.remember}\n\n${second.term}\n${second.remember}\n\nPractical difference: ${first.term} focuses on ${first.definition.charAt(0).toLowerCase() + first.definition.slice(1)} ${second.term}, by contrast, focuses on ${second.definition.charAt(0).toLowerCase() + second.definition.slice(1)}`,
+            ids: [first.id, second.id]
+          };
+        }
+
+        let focus = mentioned[0];
+        if (!focus && /it|this|current|example|limitation|steps|work|matter/.test(normalized)) focus = state.current;
+        if (focus) {
+          if (/example|scenario|real life|real world/.test(normalized)) {
+            return { text: `${focus.term} example:\n\n${focus.example}\n\nTakeaway: ${focus.remember}`, ids: [focus.id] };
+          }
+          if (/limit|weakness|drawback|problem|watch|caution|risk/.test(normalized)) {
+            return { text: `A key caution with ${focus.term}:\n\n${focus.watch}\n\nIt is most useful when treated as a decision aid rather than a perfect answer.`, ids: [focus.id] };
+          }
+          if (/step|how.*work|calculate|apply|use/.test(normalized)) {
+            return { text: `How ${focus.term} works:\n\n1. ${focus.mechanics[0]}\n2. ${focus.mechanics[1]}\n3. ${focus.mechanics[2]}\n\nWhy it matters: ${focus.why}`, ids: [focus.id] };
+          }
+          if (/why|matter|important|benefit/.test(normalized)) {
+            return { text: `${focus.why}\n\nIn one line: ${focus.remember}`, ids: [focus.id] };
+          }
+          if (/simple|simply|child|beginner|eli5/.test(normalized)) {
+            return { text: `${focus.hook}\n\nPut simply: ${focus.remember}`, ids: [focus.id] };
+          }
+          return { text: `${focus.term}${focus.full !== focus.term ? ` — ${focus.full}` : ''}\n\n${focus.definition}\n\n${focus.remember}`, ids: [focus.id] };
+        }
+
+        const topicTerms = aiTopicTerms(question);
+        if (topicTerms.length && /which|how|help|best|use|recommend|need|for|learn/.test(normalized)) {
+          const picks = topicTerms.slice(0, 4);
+          return {
+            text: `These are strong starting points:\n\n${picks.map(term => `• ${term.term}: ${term.remember}`).join('\n')}\n\nTap a term below to open its full explainer.`,
+            ids: picks.map(term => term.id)
+          };
+        }
+
+        const ranked = aiRankTerms(question).filter(item => item.score > 0).slice(0, 3);
+        if (ranked.length && ranked[0].score >= 2) {
+          return {
+            text: `Your question is most closely connected to:\n\n${ranked.map(item => `• ${item.term.term}: ${item.term.remember}`).join('\n')}\n\nAsk me to compare them, give an example, or explain one simply.`,
+            ids: ranked.map(item => item.term.id)
+          };
+        }
+
+        return {
+          text: `I couldn’t connect that clearly to a term yet. Try naming a concept or describe your situation—for example, “How do I value an investment?”, “Which tool helps with project deadlines?”, or “Compare CAC and LTV.”`,
+          ids: [state.current.id]
+        };
+      }
+
+      function addAiMessage(role, text, ids = [], typing = false) {
+        const row = document.createElement('div');
+        row.className = `ai-message ${role}`;
+        if (role === 'assistant') {
+          const avatar = document.createElement('span');
+          avatar.className = 'ai-avatar';
+          avatar.textContent = 'AI';
+          row.appendChild(avatar);
+        }
+        const bubble = document.createElement('div');
+        bubble.className = 'ai-bubble';
+        if (typing) {
+          bubble.innerHTML = '<span class="ai-typing"><i></i><i></i><i></i></span>';
+          row.dataset.typing = 'true';
+        } else {
+          const copy = document.createElement('div');
+          copy.textContent = text;
+          bubble.appendChild(copy);
+          if (role === 'assistant' && ids.length) {
+            const refs = document.createElement('div');
+            refs.className = 'ai-references';
+            [...new Set(ids)].forEach(id => {
+              const term = TERMS.find(item => item.id === id);
+              if (!term) return;
+              const button = document.createElement('button');
+              button.className = 'ai-ref';
+              button.textContent = `Open ${term.term}`;
+              button.addEventListener('click', () => {
+                render(term);
+                els.aiDialog.close();
+                els.workspace.scrollIntoView({behavior: 'smooth', block: 'start'});
+              });
+              refs.appendChild(button);
+            });
+            bubble.appendChild(refs);
+          }
+        }
+        row.appendChild(bubble);
+        els.aiMessages.appendChild(row);
+        els.aiMessages.scrollTop = els.aiMessages.scrollHeight;
+        return row;
+      }
+
+      function openAi() {
+        closeDrawer();
+        if (!state.aiStarted) {
+          addAiMessage('assistant', `Hi! I’m your Business AI Coach. I can explain concepts, compare terms, suggest a framework for your situation, or quiz you.\n\nYou’re currently viewing ${state.current.term}. What would you like to know?`, [state.current.id]);
+          state.aiStarted = true;
+        }
+        els.aiDialog.showModal();
+        setTimeout(() => els.aiInput.focus(), 120);
+      }
+
+      function askAi(question) {
+        const clean = question.trim();
+        if (!clean || state.aiBusy) return;
+        state.aiBusy = true;
+        addAiMessage('user', clean);
+        els.aiInput.value = '';
+        const typing = addAiMessage('assistant', '', [], true);
+        setTimeout(() => {
+          typing.remove();
+          const answer = aiAnswer(clean);
+          addAiMessage('assistant', answer.text, answer.ids);
+          state.aiBusy = false;
+        }, 420 + Math.random() * 280);
+      }
+
+      function renderLibrary(query = '') {
+        const q = query.trim().toLowerCase();
+        const filtered = TERMS.filter(t => `${t.term} ${t.full} ${t.category}`.toLowerCase().includes(q));
+        els.termList.innerHTML = '';
+        filtered.forEach(t => {
+          const row = document.createElement('button');
+          row.className = `term-row${state.current && t.id === state.current.id ? ' current' : ''}`;
+          row.innerHTML = `<span class="row-icon" style="background:${t.accent}">${initials(t.term)}</span><span class="row-copy"><strong>${t.term}</strong><small>${t.full} · ${t.category}</small></span><span class="seen-dot ${state.seen.has(t.id) ? 'seen' : ''}"></span>`;
+          row.addEventListener('click', () => {
+            if (!state.current || t.id !== state.current.id) render(t);
+            closeDrawer();
+            els.workspace.scrollIntoView({behavior:'smooth', block:'start'});
+          });
+          els.termList.appendChild(row);
+        });
+      }
+
+      function setMobilePanel(panel) {
+        const allowed = ['overview', 'steps', 'application'];
+        const next = allowed.includes(panel) ? panel : 'overview';
+        els.lessonContent.dataset.mobilePanel = next;
+        document.querySelectorAll('#mobileTabs button').forEach(button => {
+          const active = button.dataset.panel === next;
+          button.classList.toggle('active', active);
+          button.setAttribute('aria-pressed', String(active));
+        });
+      }
+
+      function openDrawer() { document.body.classList.add('drawer-open'); setTimeout(() => els.search.focus(), 250); }
+      function closeDrawer() { document.body.classList.remove('drawer-open'); }
+
+      async function copyLesson() {
+        const t = state.current;
+        const text = `${t.term}${t.full !== t.term ? ` — ${t.full}` : ''}\n\n${t.hook}\n\n${t.definition}\n\nHow it works:\n• ${t.mechanics.join('\n• ')}\n\nExample: ${t.example}\n\nWhy it matters: ${t.why}\n\nWatch out: ${t.watch}\n\nRemember: ${t.remember}`;
+        try { await navigator.clipboard.writeText(text); $('copyBtn').querySelector('span').textContent = 'Copied!'; setTimeout(() => $('copyBtn').querySelector('span').textContent = 'Copy', 1300); }
+        catch { /* clipboard can be unavailable in sandboxed previews */ }
+      }
+
+      async function shareLesson() {
+        const data = {title: state.current.term, text: `${state.current.term}: ${state.current.remember}`, url: location.href};
+        if (navigator.share) { try { await navigator.share(data); } catch {} }
+        else copyLesson();
+      }
+
+      els.nextBtn.addEventListener('click', nextRandom);
+      els.playBtn.addEventListener('click', toggleSpeech);
+      els.quizBtn.addEventListener('click', openQuiz);
+      $('aiBtn').addEventListener('click', openAi);
+      $('closeAi').addEventListener('click', () => els.aiDialog.close());
+      els.aiDialog.addEventListener('click', event => { if (event.target === els.aiDialog) els.aiDialog.close(); });
+      els.aiForm.addEventListener('submit', event => { event.preventDefault(); askAi(els.aiInput.value); });
+      $('aiSuggestions').addEventListener('click', event => {
+        const suggestion = event.target.closest('.ai-suggestion');
+        if (suggestion) askAi(suggestion.textContent);
+      });
+      $('closeQuiz').addEventListener('click', () => els.quizDialog.close());
+      els.quizDialog.addEventListener('click', e => { if (e.target === els.quizDialog) els.quizDialog.close(); });
+      $('copyBtn').addEventListener('click', copyLesson);
+      $('shareBtn').addEventListener('click', shareLesson);
+      els.libraryBtn.addEventListener('click', openDrawer);
+      $('closeDrawer').addEventListener('click', closeDrawer);
+      els.drawerBackdrop.addEventListener('click', closeDrawer);
+      els.search.addEventListener('input', e => renderLibrary(e.target.value));
+      $('mobileTabs').addEventListener('click', event => {
+        const button = event.target.closest('button[data-panel]');
+        if (button) setMobilePanel(button.dataset.panel);
+      });
+      document.addEventListener('keydown', e => {
+        if ((e.key === 'n' || e.key === 'N') && !/INPUT|TEXTAREA/.test(e.target.tagName) && !els.quizDialog.open && !els.aiDialog.open) nextRandom();
+        if (e.key === 'Escape') closeDrawer();
+      });
+      window.addEventListener('beforeunload', stopSpeech);
+
+      state.queue = freshQueue(state.lastId);
+      nextRandom();
+      renderLibrary();
+    })();
+  </script>
+</body>
+</html>
