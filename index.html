@@ -506,7 +506,7 @@
         <div class="bottom-controls">
           <button class="play-btn" id="playBtn" aria-label="Listen to this two-minute explanation">
             <span class="play-disc" id="playDisc"><svg id="playIcon" viewBox="0 0 24 24" fill="currentColor"><path d="m8 5 11 7-11 7V5Z"/></svg></span>
-            <span class="play-copy"><span id="playLabel">Listen to explainer</span><small>Natural browser narration</small></span>
+            <span class="play-copy"><span id="playLabel">Listen to explainer</span><small>Indian English male narration</small></span>
           </button>
           <div class="right-controls">
             <button class="quiz-btn" id="quizBtn">Quick check</button>
@@ -1099,6 +1099,12 @@ window.TERMS = [
         aiQuiz: null
       };
 
+      let speechVoices = 'speechSynthesis' in window ? window.speechSynthesis.getVoices() : [];
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.onvoiceschanged = () => {
+          speechVoices = window.speechSynthesis.getVoices();
+        };
+      }
       const els = {
         workspace: $('workspace'), category: $('category'), deckCount: $('deckCount'), monogram: $('monogram'), termArt: $('termArt'),
         termTitle: $('termTitle'), termFull: $('termFull'), learnedNumber: $('learnedNumber'), readTime: $('readTime'),
@@ -1126,11 +1132,22 @@ window.TERMS = [
         return q;
       }
 
-      function narration(t) {
+      function narrationParts(t) {
         const expanded = t.full !== t.term ? `, which stands for ${t.full}` : '';
-        return `Today’s term is ${t.term}${expanded}. ${t.hook} ${t.definition} Here is how it works. First, ${t.mechanics[0]} Next, ${t.mechanics[1]} Finally, ${t.mechanics[2]} Consider this example. ${t.example} Why does this matter? ${t.why} One caution: ${t.watch} If you remember one thing, remember this: ${t.remember}`;
+        return [
+          `Today’s term is ${t.term}${expanded}. ${t.hook}`,
+          t.definition,
+          `Here is how it works. First, ${t.mechanics[0]}`,
+          `Next, ${t.mechanics[1]}`,
+          `Finally, ${t.mechanics[2]}`,
+          `Consider this example. ${t.example}`,
+          `Why does this matter? ${t.why}`,
+          `One caution: ${t.watch}`,
+          `If you remember one thing, remember this: ${t.remember}`
+        ];
       }
 
+      function narration(t) { return narrationParts(t).join(' '); }
       function words(text) { return text.trim().split(/\s+/).filter(Boolean).length; }
 
       function prepareKaraoke(t) {
@@ -1410,38 +1427,58 @@ window.TERMS = [
           return;
         }
         prepareKaraoke(state.current);
-        const speechText = narration(state.current);
-        const u = new SpeechSynthesisUtterance(speechText);
-        u.rate = .82;
-        u.pitch = 1;
-        const voices = window.speechSynthesis.getVoices();
-        u.voice = voices.find(v => /^en-(IN|GB)/.test(v.lang) && /female|samantha|veena|rishi/i.test(v.name)) ||
-                  voices.find(v => /^en-(IN|GB)/.test(v.lang)) || voices.find(v => /^en/.test(v.lang)) || null;
-        u.onstart = () => {
-          setPlayState('speaking');
-          updateKaraoke(0);
-          startSpeechProgress(speechText);
-          requestAnimationFrame(() => els.karaoke.scrollIntoView({behavior: 'smooth', block: 'center'}));
-        };
-        u.onboundary = (event) => {
-          if (typeof event.charIndex !== 'number') return;
-          state.lastBoundaryAt = Date.now();
-          updateKaraoke(event.charIndex);
-        };
-        u.onend = () => {
-          finishKaraoke();
-          setPlayState('idle');
-        };
-        u.onerror = () => {
-          clearSpeechTimer();
-          els.karaokeStatus.textContent = 'Narration stopped';
-          setPlayState('idle');
-        };
-        state.utterance = u;
-        window.speechSynthesis.cancel();
-        window.speechSynthesis.speak(u);
-      }
+        const parts = narrationParts(state.current);
+        const speechText = parts.join(' ');
+        const voices = speechVoices.length ? speechVoices : window.speechSynthesis.getVoices();
+        const maleName = /(^|[\s_-])(male|rishi|ravi|prabhat|madhur|aditya|aarav|daniel|george|ryan|oliver)([\s_-]|$)/i;
+        const voice = voices.find(v => /^en-IN/i.test(v.lang) && maleName.test(v.name)) ||
+                      voices.find(v => /^en-GB/i.test(v.lang) && maleName.test(v.name)) ||
+                      voices.find(v => /^en/i.test(v.lang) && maleName.test(v.name)) ||
+                      voices.find(v => /^en-IN/i.test(v.lang)) ||
+                      voices.find(v => /^en/i.test(v.lang)) || null;
+        const phrasePitches = [1.02, 0.99, 1.00, 0.99, 1.00, 1.02, 0.99, 0.98, 1.03];
 
+        function speakPart(index, charOffset) {
+          const u = new SpeechSynthesisUtterance(parts[index]);
+          u.rate = .97;
+          u.pitch = phrasePitches[index] || 1;
+          u.volume = 1;
+          u.voice = voice;
+          u.onstart = () => {
+            if (index === 0) {
+              setPlayState('speaking');
+              startSpeechProgress(speechText);
+              requestAnimationFrame(() => els.karaoke.scrollIntoView({behavior: 'smooth', block: 'center'}));
+            }
+            updateKaraoke(charOffset);
+          };
+          u.onboundary = (event) => {
+            if (typeof event.charIndex !== 'number') return;
+            state.lastBoundaryAt = Date.now();
+            updateKaraoke(charOffset + event.charIndex);
+          };
+          u.onend = () => {
+            if (index + 1 < parts.length) {
+              speakPart(index + 1, charOffset + parts[index].length + 1);
+            } else {
+              finishKaraoke();
+              state.utterance = null;
+              setPlayState('idle');
+            }
+          };
+          u.onerror = () => {
+            clearSpeechTimer();
+            els.karaokeStatus.textContent = 'Narration stopped';
+            state.utterance = null;
+            setPlayState('idle');
+          };
+          state.utterance = u;
+          window.speechSynthesis.speak(u);
+        }
+
+        window.speechSynthesis.cancel();
+        speakPart(0, 0);
+      }
       function openQuiz() {
         const others = shuffle(TERMS.filter(t => t.id !== state.current.id)).slice(0,2);
         const choices = shuffle([{text: state.current.definition, correct: true}, ...others.map(t => ({text: t.definition, correct:false}))]);
