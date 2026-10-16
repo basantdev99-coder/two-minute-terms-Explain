@@ -401,6 +401,14 @@
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
     }
   </style>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R6CRDENJK5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-R6CRDENJK5');
+  </script>
 </head>
 <body>
   <div class="noise" aria-hidden="true"></div>
@@ -1079,6 +1087,12 @@ window.TERMS = [
     (() => {
       const TERMS = window.TERMS || [];
       const $ = (id) => document.getElementById(id);
+      function trackAnalytics(eventName, params = {}) {
+        if (typeof window.gtag === 'function') window.gtag('event', eventName, params);
+      }
+      function termAnalyticsParams(term = state.current) {
+        return term ? {term_id: term.id, term_name: term.term, category: term.category} : {};
+      }
       const state = {
         current: null,
         queue: [],
@@ -1321,6 +1335,7 @@ window.TERMS = [
       function render(t, animate = true) {
         stopSpeech();
         state.current = t;
+        trackAnalytics('term_open', termAnalyticsParams(t));
         state.lastId = t.id;
         localStorage.setItem('tmt-last', t.id);
         markSeen(t);
@@ -1417,11 +1432,13 @@ window.TERMS = [
           return;
         }
         if (state.speaking && !state.paused) {
+          trackAnalytics('narration_pause', termAnalyticsParams());
           window.speechSynthesis.pause();
           setPlayState('paused');
           return;
         }
         if (state.paused) {
+          trackAnalytics('narration_resume', termAnalyticsParams());
           window.speechSynthesis.resume();
           setPlayState('speaking');
           return;
@@ -1446,6 +1463,7 @@ window.TERMS = [
           u.voice = voice;
           u.onstart = () => {
             if (index === 0) {
+              trackAnalytics('narration_start', termAnalyticsParams());
               setPlayState('speaking');
               startSpeechProgress(speechText);
               requestAnimationFrame(() => els.karaoke.scrollIntoView({behavior: 'smooth', block: 'center'}));
@@ -1480,6 +1498,7 @@ window.TERMS = [
         speakPart(0, 0);
       }
       function openQuiz() {
+        trackAnalytics('quiz_start', termAnalyticsParams());
         const others = shuffle(TERMS.filter(t => t.id !== state.current.id)).slice(0,2);
         const choices = shuffle([{text: state.current.definition, correct: true}, ...others.map(t => ({text: t.definition, correct:false}))]);
         els.quizTerm.textContent = state.current.term;
@@ -1492,6 +1511,8 @@ window.TERMS = [
           b.textContent = choice.text;
           b.dataset.correct = choice.correct;
           b.addEventListener('click', () => {
+            trackAnalytics('quiz_answer', {...termAnalyticsParams(), result: choice.correct ? 'correct' : 'incorrect'});
+            if (choice.correct) trackAnalytics('quiz_correct', termAnalyticsParams());
             [...els.quizOptions.children].forEach(opt => {
               opt.disabled = true;
               if (opt.dataset.correct === 'true') opt.classList.add('correct');
@@ -1720,6 +1741,7 @@ window.TERMS = [
       }
 
       function openAi() {
+        trackAnalytics('ai_coach_open', termAnalyticsParams());
         closeDrawer();
         if (!state.aiStarted) {
           addAiMessage('assistant', `Hi! I’m your Business AI Coach. I can explain concepts, compare terms, suggest a framework for your situation, or quiz you.\n\nYou’re currently viewing ${state.current.term}. What would you like to know?`, [state.current.id]);
@@ -1733,6 +1755,7 @@ window.TERMS = [
         const clean = question.trim();
         if (!clean || state.aiBusy) return;
         state.aiBusy = true;
+        trackAnalytics('ai_question_submitted', termAnalyticsParams());
         addAiMessage('user', clean);
         els.aiInput.value = '';
         const typing = addAiMessage('assistant', '', [], true);
@@ -1772,11 +1795,12 @@ window.TERMS = [
         });
       }
 
-      function openDrawer() { document.body.classList.add('drawer-open'); setTimeout(() => els.search.focus(), 250); }
+      function openDrawer() { trackAnalytics('library_open', termAnalyticsParams()); document.body.classList.add('drawer-open'); setTimeout(() => els.search.focus(), 250); }
       function closeDrawer() { document.body.classList.remove('drawer-open'); }
 
-      async function copyLesson() {
+      async function copyLesson(trackCopy = true) {
         const t = state.current;
+        if (trackCopy) trackAnalytics('lesson_copy', termAnalyticsParams(t));
         const text = `${t.term}${t.full !== t.term ? ` — ${t.full}` : ''}\n\n${t.hook}\n\n${t.definition}\n\nHow it works:\n• ${t.mechanics.join('\n• ')}\n\nExample: ${t.example}\n\nWhy it matters: ${t.why}\n\nWatch out: ${t.watch}\n\nRemember: ${t.remember}`;
         try { await navigator.clipboard.writeText(text); $('copyBtn').querySelector('span').textContent = 'Copied!'; setTimeout(() => $('copyBtn').querySelector('span').textContent = 'Copy', 1300); }
         catch { /* clipboard can be unavailable in sandboxed previews */ }
@@ -1784,8 +1808,9 @@ window.TERMS = [
 
       async function shareLesson() {
         const data = {title: state.current.term, text: `${state.current.term}: ${state.current.remember}`, url: location.href};
+        trackAnalytics('lesson_share', {...termAnalyticsParams(), share_method: navigator.share ? 'native' : 'clipboard_fallback'});
         if (navigator.share) { try { await navigator.share(data); } catch {} }
-        else copyLesson();
+        else copyLesson(false);
       }
 
       els.nextBtn.addEventListener('click', nextRandom);
